@@ -1,0 +1,6 @@
+{
+  "docs": {
+    "CLI Usage": ["doc1"],
+    "API Reference": ["doc2"]
+  }
+}

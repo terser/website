@@ -4,7 +4,7 @@ const CompLibrary = require('../../core/CompLibrary.js');
 
 const Container = CompLibrary.Container;
 
-class Users extends React.Component {
+class Sponsors extends React.Component {
   render() {
     const {config: siteConfig} = this.props;
     if ((siteConfig.users || []).length === 0) {
@@ -21,15 +21,8 @@ class Users extends React.Component {
     return (
       <div className="mainContainer">
         <Container padding={['bottom', 'top']}>
-          <div className="showcaseSection">
-            <div className="prose">
-              <h1>Who is Using Terser?</h1>
-            </div>
-            <div className="logos">{showcase}</div>
-            <p>Are you using this project?</p>
-            <a href={editUrl} className="button">
-              Add your company
-            </a>
+          <div className="sponsorsSection">
+            soon...
           </div>
         </Container>
       </div>
@@ -37,4 +30,4 @@ class Users extends React.Component {
   }
 }
 
-module.exports = Users;
+module.exports = Sponsors;

@@ -137,7 +137,7 @@ class Index extends React.Component {
           <h2>Sponsors / Patreons</h2>
           <div className="logos">{showcase}</div>
           <div className="more-users">
-            <a className="button" href={pageUrl('sponsors.html')}>
+            <a className="button" disabled href={pageUrl('sponsors.html')}>
               More {siteConfig.title} Sponsors
             </a>
           </div>

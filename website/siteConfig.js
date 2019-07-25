@@ -37,6 +37,8 @@ const siteConfig = {
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
 
+  cname: 'terser.org',
+
   // Used for publishing and more
   projectName: 'terser-js.github.io',
   organizationName: 'terser-js',

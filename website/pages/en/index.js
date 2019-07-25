@@ -94,6 +94,18 @@ class Index extends React.Component {
             title: 'Feature One',
           },
           {
+            content: 'This is the content of my feature',
+            // image: `${baseUrl}img/undraw_react.svg`,
+            imageAlign: 'top',
+            title: 'Feature One',
+          },
+          {
+            content: 'This is the content of my feature',
+            // image: `${baseUrl}img/undraw_react.svg`,
+            imageAlign: 'top',
+            title: 'Feature One',
+          },
+          {
             content: 'The content of my second feature',
             // image: `${baseUrl}img/undraw_operating_system.svg`,
             imageAlign: 'top',

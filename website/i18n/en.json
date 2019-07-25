@@ -5,21 +5,13 @@
     "previous": "Previous",
     "tagline": "JavaScript parser, mangler, optimizer and beautifier toolkit for ES6+",
     "docs": {
-      "doc1": {
-        "title": "Latin-ish",
-        "sidebar_label": "Example Page"
+      "api-reference": {
+        "title": "API Reference",
+        "sidebar_label": "Reference"
       },
-      "doc2": {
-        "title": "document number 2"
-      },
-      "doc3": {
-        "title": "This is document number 3"
-      },
-      "doc4": {
-        "title": "Other Document"
-      },
-      "doc5": {
-        "title": "Fifth Document"
+      "cli-usage": {
+        "title": "CLI Usage",
+        "sidebar_label": "CLI Usage"
       }
     },
     "links": {
@@ -28,8 +20,8 @@
       "Blog": "Blog"
     },
     "categories": {
-      "CLI Usage": "CLI Usage",
-      "API Reference": "API Reference"
+      "CLI": "CLI",
+      "API": "API"
     }
   },
   "pages-strings": {

@@ -11,6 +11,12 @@ const users = [
     infoLink: 'https://webpack.js.org',
     pinned: true,
   },
+  {
+    caption: 'Angular',
+    image: '/img/angular.svg',
+    infoLink: 'https://angular.io/',
+    pinned: true,
+  },
 ];
 
 const sponsors = [

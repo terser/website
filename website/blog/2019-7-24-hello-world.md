@@ -1,7 +1,5 @@
 ---
 title: Hello World
-author: Terser
-authorURL: https://terser.org
 ---
 
 Yay! This is officially the first blog post!

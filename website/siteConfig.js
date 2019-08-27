@@ -35,7 +35,7 @@ const sponsors = [
 ];
 
 const siteConfig = {
-  title: 'Terser', // Title for your website.
+  title: 'terser', // Title for your website.
   tagline: 'JavaScript parser, mangler, optimizer and beautifier toolkit for ES6+',
   url: 'https://terser.org', // Your website URL
   baseUrl: '/', // Base URL for your project */
@@ -59,19 +59,19 @@ const siteConfig = {
     {blog: true, label: 'Blog'},
   ],
 
-  // If you have users set above, you add it here:
+  // If yo
   users,
   sponsors,
 
   /* path to images for header/footer */
-  headerIcon: 'img/terser-logo.png',
-  footerIcon: 'img/terser-logo.png',
+  headerIcon: 'img/terser-square-logo.png',
+  footerIcon: 'img/terser-square-logo.png',
   favicon: 'img/favicon.ico',
 
   /* Colors for website */
   colors: {
-    primaryColor: '#ff1d02',
-    secondaryColor: '#ff1d02',
+    primaryColor: '#fd5e1c',
+    secondaryColor: '#16181d',
   },
 
   /* Custom fonts for website */

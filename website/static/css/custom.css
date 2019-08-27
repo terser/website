@@ -1,5 +1,10 @@
 /* your custom css */
 
+.darkContainer {
+  background-color: #20232a;
+  color: #fff;
+}
+
 .fixedHeaderContainer {
   background-color: #20232a;
 }

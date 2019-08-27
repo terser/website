@@ -54,7 +54,7 @@ class HomeSplash extends React.Component {
 
     return (
       <SplashContainer>
-        <Logo img_src={`${baseUrl}img/terser-full-logo.png`} />
+        <Logo img_src={`${baseUrl}img/terser-banner-logo.png`} />
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
@@ -146,7 +146,7 @@ class Index extends React.Component {
     };
 
     return (
-      <div>
+      <div className="darkContainer">
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
           <TerserOutput />

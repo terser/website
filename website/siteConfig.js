@@ -36,7 +36,7 @@ const sponsors = [
 
 const siteConfig = {
   title: 'terser', // Title for your website.
-  tagline: 'JavaScript parser, mangler, optimizer and beautifier toolkit for ES6+',
+  tagline: 'JavaScript parser, mangler and compressor toolkit for ES6+',
   url: 'https://terser.org', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:

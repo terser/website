@@ -54,7 +54,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {page: 'repl', label: 'REPL'},
+    {href: 'https://try.terser.org', label: 'REPL'},
     {doc: 'cli-usage', label: 'Docs'},
     {blog: true, label: 'Blog'},
   ],

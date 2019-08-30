@@ -34,6 +34,11 @@ const sponsors = [
   }
 ];
 
+const algolia = {
+  apiKey: '1cb245a69775e2d0a25930e5626dde28',
+  indexName: 'terser'
+}
+
 const siteConfig = {
   title: 'terser', // Title for your website.
   tagline: 'JavaScript parser, mangler and compressor toolkit for ES6+',
@@ -57,9 +62,9 @@ const siteConfig = {
     {href: 'https://try.terser.org', label: 'REPL'},
     {doc: 'cli-usage', label: 'Docs'},
     {blog: true, label: 'Blog'},
+    {search: true}
   ],
 
-  // If yo
   users,
   sponsors,
 
@@ -121,6 +126,8 @@ const siteConfig = {
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/terser/website',
+
+  algolia,
 };
 
 module.exports = siteConfig;

@@ -22,13 +22,13 @@ const users = [
 const sponsors = [
   {
     caption: 'CKEditor',
-    image: '',
+    image: 'https://ckeditor.com/assets/images/favicons/180x180-b998f23431.png',
     infoLink: 'https://ckeditor.com',
     pinned: true,
   },
   {
     caption: '38elements',
-    image: '',
+    image: 'https://avatars2.githubusercontent.com/u/2399132?s=460&v=4',
     infoLink: 'https://github.com/38elements',
     pinned: true,
   }

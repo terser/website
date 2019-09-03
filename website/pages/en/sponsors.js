@@ -12,7 +12,7 @@ class Sponsors extends React.Component {
     }
 
     const editUrl = `${siteConfig.repoUrl}/edit/master/website/siteConfig.js`;
-    const showcase = siteConfig.users.map(user => (
+    const showcase = siteConfig.sponsors.map(user => (
       <a href={user.infoLink} key={user.infoLink}>
         <img src={user.image} alt={user.caption} title={user.caption} />
       </a>
@@ -21,8 +21,16 @@ class Sponsors extends React.Component {
     return (
       <div className="mainContainer">
         <Container padding={['bottom', 'top']}>
-          <div className="sponsorsSection">
-            soon...
+          <div className="showcaseSection">
+            <div className="prose">
+              <h1>Terser Sponsors</h1>
+              <p>Terser is sponsored by these awesome people/companies:</p>
+            </div>
+            <div className="logos">{showcase}</div>
+            <p>Are you using this project?</p>
+            <a href={editUrl} className="button">
+              Add your company
+            </a>
           </div>
         </Container>
       </div>

@@ -19,6 +19,10 @@
   color: rgba(0, 0, 0, 0.6);
 }
 
+.hasBlackBg {
+  background-color: #000;
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 

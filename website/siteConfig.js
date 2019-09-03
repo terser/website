@@ -17,6 +17,25 @@ const users = [
     infoLink: 'https://angular.io/',
     pinned: true,
   },
+  {
+    caption: 'Next.js',
+    image: '/img/next.svg',
+		fillBackground: true,
+    infoLink: 'https://nextjs.org/',
+    pinned: true,
+  },
+  {
+    caption: 'Parcel',
+    image: '/img/parcel.png',
+    infoLink: 'https://parceljs.org',
+    pinned: true,
+  },
+  {
+    caption: 'Aurelia',
+    image: '/img/aurelia.png',
+    infoLink: 'https://aurelia.io',
+    pinned: true,
+  },
 ];
 
 const sponsors = [

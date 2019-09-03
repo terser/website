@@ -6,7 +6,7 @@ const Container = CompLibrary.Container;
 
 class Sponsors extends React.Component {
   render() {
-    const {config: siteConfig} = this.props;
+    const { config: siteConfig } = this.props;
     if ((siteConfig.users || []).length === 0) {
       return null;
     }

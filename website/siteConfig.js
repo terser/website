@@ -9,33 +9,33 @@ const users = [
     // if it is not '/', like: '/test-site/img/image.jpg'.
     image: '/img/webpack.svg',
     infoLink: 'https://webpack.js.org',
-    pinned: true,
+    pinned: true
   },
   {
     caption: 'Angular',
     image: '/img/angular.svg',
     infoLink: 'https://angular.io/',
-    pinned: true,
+    pinned: true
   },
   {
     caption: 'Next.js',
     image: '/img/next.svg',
-		fillBackground: true,
+    fillBackground: true,
     infoLink: 'https://nextjs.org/',
-    pinned: true,
+    pinned: true
   },
   {
     caption: 'Parcel',
     image: '/img/parcel.png',
     infoLink: 'https://parceljs.org',
-    pinned: true,
+    pinned: true
   },
   {
     caption: 'Aurelia',
     image: '/img/aurelia.png',
     infoLink: 'https://aurelia.io',
-    pinned: true,
-  },
+    pinned: true
+  }
 ];
 
 const sponsors = [
@@ -43,20 +43,20 @@ const sponsors = [
     caption: 'CKEditor',
     image: 'https://ckeditor.com/assets/images/favicons/180x180-b998f23431.png',
     infoLink: 'https://ckeditor.com',
-    pinned: true,
+    pinned: true
   },
   {
     caption: '38elements',
     image: 'https://avatars2.githubusercontent.com/u/2399132?s=460&v=4',
     infoLink: 'https://github.com/38elements',
-    pinned: true,
+    pinned: true
   }
 ];
 
 const algolia = {
   apiKey: '1cb245a69775e2d0a25930e5626dde28',
   indexName: 'terser'
-}
+};
 
 const siteConfig = {
   title: 'terser', // Title for your website.
@@ -78,10 +78,10 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {href: 'https://try.terser.org', label: 'REPL'},
-    {doc: 'cli-usage', label: 'Docs'},
-    {blog: true, label: 'Blog'},
-    {search: true}
+    { href: 'https://try.terser.org', label: 'REPL' },
+    { doc: 'cli-usage', label: 'Docs' },
+    { blog: true, label: 'Blog' },
+    { search: true }
   ],
 
   users,
@@ -95,7 +95,7 @@ const siteConfig = {
   /* Colors for website */
   colors: {
     primaryColor: '#fd5e1c',
-    secondaryColor: '#16181d',
+    secondaryColor: '#16181d'
   },
 
   /* Custom fonts for website */
@@ -117,7 +117,7 @@ const siteConfig = {
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
-    theme: 'default',
+    theme: 'default'
   },
 
   // Add custom scripts here that would be placed in <script> tags.
@@ -146,7 +146,7 @@ const siteConfig = {
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/terser/website',
 
-  algolia,
+  algolia
 };
 
 module.exports = siteConfig;

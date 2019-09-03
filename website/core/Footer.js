@@ -29,12 +29,8 @@ class Footer extends React.Component {
           </a>
           <div>
             <h5>Docs</h5>
-            <a href={this.docUrl('cli-usage.html')}>
-              CLI Usage
-            </a>
-            <a href={this.docUrl('api-reference.html')}>
-              API Reference
-            </a>
+            <a href={this.docUrl('cli-usage.html')}>CLI Usage</a>
+            <a href={this.docUrl('api-reference.html')}>API Reference</a>
           </div>
           <div>
             <h5>Community</h5>
@@ -44,7 +40,8 @@ class Footer extends React.Component {
             <a
               href="https://stackoverflow.com/questions/tagged/terser"
               target="_blank"
-              rel="noreferrer noopener">
+              rel="noreferrer noopener"
+            >
               Stack Overflow
             </a>
           </div>
@@ -56,10 +53,10 @@ class Footer extends React.Component {
             {this.props.config.twitterUsername && (
               <div className="social">
                 <a
-                  href={`https://twitter.com/${
-                    this.props.config.twitterUsername
-                  }`}
-                  className="twitter-follow-button">
+                  href={`https://twitter.com/${this.props.config
+                    .twitterUsername}`}
+                  className="twitter-follow-button"
+                >
                   Follow @{this.props.config.twitterUsername}
                 </a>
               </div>

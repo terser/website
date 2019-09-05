@@ -1,3 +1,5 @@
+const openCollectiveSponsors = require('./data/sponsors.json')
+
 // See https://docusaurus.io/docs/site-config for all the possible
 // site configuration options.
 
@@ -51,7 +53,7 @@ const sponsors = [
     infoLink: 'https://github.com/38elements',
     pinned: true
   }
-];
+].concat(openCollectiveSponsors);
 
 const algolia = {
   apiKey: '1cb245a69775e2d0a25930e5626dde28',

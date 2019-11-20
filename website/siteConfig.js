@@ -37,6 +37,12 @@ const users = [
     image: '/img/aurelia.png',
     infoLink: 'https://aurelia.io',
     pinned: true
+  },
+  {
+    caption: 'NuxtJS',
+    image: '/img/nuxt.svg',
+    infoLink: 'https://nuxtjs.org',
+    pinned: true
   }
 ];
 

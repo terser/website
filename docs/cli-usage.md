@@ -3,7 +3,24 @@ id: cli-usage
 title: CLI Usage
 sidebar_label: CLI Usage
 ---
-## Overview
+
+
+    terser [input files] [options]
+
+Terser can take multiple input files.  It's recommended that you pass the
+input files first, then pass the options.  Terser will parse input files
+in sequence and apply any compression options.  The files are parsed in the
+same global scope, that is, a reference from a file to some
+variable/function declared in another file will be matched properly.
+
+If no input file is specified, Terser will read from STDIN.
+
+If you wish to pass your options before the input files, separate the two with
+a double dash to prevent input files being used as option arguments:
+
+    terser --compress --mangle -- input.js
+
+### Command line options
 
 ```
     -h, --help                  Print usage information.
@@ -28,17 +45,16 @@ sidebar_label: CLI Usage
                                 `reserved`  List of names that should not be mangled.
     --mangle-props [options]    Mangle properties/specify mangler options:
                                 `builtins`  Mangle property names that overlaps
-                                            with standard JavaScript globals.
+                                            with standard JavaScript globals and DOM
+                                            API props.
                                 `debug`  Add debug prefix and suffix.
-                                `domprops`  Mangle property names that overlaps
-                                            with DOM properties.
                                 `keep_quoted`  Only mangle unquoted properties, quoted
                                                properties are automatically reserved.
                                                `strict` disables quoted properties
                                                being automatically reserved.
                                 `regex`  Only mangle matched property names.
                                 `reserved`  List of names that should not be mangled.
-    -b, --beautify [options]     Specify output options:
+    -f, --format [options]      Specify format options.
                                 `preamble`  Preamble to prepend to the output. You
                                             can use this to insert a comment, for
                                             example for licensing information.
@@ -52,6 +68,7 @@ sidebar_label: CLI Usage
                                 `wrap_iife`  Wrap IIFEs in parenthesis. Note: you may
                                              want to disable `negate_iife` under
                                              compressor options.
+                                `wrap_func_args`  Wrap function arguments in parenthesis.
     -o, --output <file>         Output file path (default STDOUT). Specify `ast` or
                                 `spidermonkey` to write Terser or SpiderMonkey AST
                                 as JSON to STDOUT respectively.
@@ -61,6 +78,7 @@ sidebar_label: CLI Usage
                                 "@preserve". You can optionally pass one of the
                                 following arguments to this flag:
                                 - "all" to keep all comments
+                                - `false` to omit comments in the output
                                 - a valid JS RegExp like `/foo/` or `/^!/` to
                                 keep only matching comments.
                                 Note that currently not *all* comments can be
@@ -69,12 +87,12 @@ sidebar_label: CLI Usage
                                 sequences.
     --config-file <file>        Read `minify()` options from JSON file.
     -d, --define <expr>[=value] Global definitions.
-    --ecma <version>            Specify ECMAScript release: 5, 6, 7 or 8.
+    --ecma <version>            Specify ECMAScript release: 5, 2015, 2016, etc.
     -e, --enclose [arg[:value]] Embed output in a big function with configurable
                                 arguments and values.
     --ie8                       Support non-standard Internet Explorer 8.
                                 Equivalent to setting `ie8: true` in `minify()`
-                                for `compress`, `mangle` and `output` options.
+                                for `compress`, `mangle` and `format` options.
                                 By default Terser will not try to be IE-proof.
     --keep-classnames           Do not mangle/drop class names.
     --keep-fnames               Do not mangle/drop function names.  Useful for
@@ -84,7 +102,7 @@ sidebar_label: CLI Usage
     --name-cache <file>         File to hold mangled name mappings.
     --safari10                  Support non-standard Safari 10/11.
                                 Equivalent to setting `safari10: true` in `minify()`
-                                for `mangle` and `output` options.
+                                for `mangle` and `format` options.
                                 By default `terser` will not work around
                                 Safari 10/11 bugs.
     --source-map [options]      Enable source map/specify source map options:
@@ -103,8 +121,6 @@ sidebar_label: CLI Usage
                                        `//# sourceMappingURL`.
     --timings                   Display operations run time on STDERR.
     --toplevel                  Compress and/or mangle variables in top level scope.
-    --verbose                   Print diagnostic messages.
-    --warn                      Print warning messages.
     --wrap <name>               Embed everything in a big function, making the
                                 “exports” and “global” variables available. You
                                 need to pass an argument to this option to
@@ -201,7 +217,7 @@ way to use this is to use the `regex` option like so:
 terser example.js -c -m --mangle-props regex=/_$/
 ```
 
-This will mangle all properties that start with an 
+This will mangle all properties that end with an
 underscore. So you can use it to mangle internal methods.
 
 By default, it will mangle all properties in the
@@ -229,40 +245,36 @@ console.log(x.calc());
 ```
 Mangle all properties (except for JavaScript `builtins`) (**very** unsafe):
 ```bash
-$ terser example.js -c -m --mangle-props
+$ terser example.js -c passes=2 -m --mangle-props
 ```
 ```javascript
-var x={o:0,_:1,l:function(){return this._+this.o}};x.t=2,x.o=3,console.log(x.l());
+var x={o:3,t:1,i:function(){return this.t+this.o},s:2};console.log(x.i());
 ```
 Mangle all properties except for `reserved` properties (still very unsafe):
 ```bash
-$ terser example.js -c -m --mangle-props reserved=[foo_,bar_]
+$ terser example.js -c passes=2 -m --mangle-props reserved=[foo_,bar_]
 ```
 ```javascript
-var x={o:0,foo_:1,_:function(){return this.foo_+this.o}};x.bar_=2,x.o=3,console.log(x._());
+var x={o:3,foo_:1,t:function(){return this.foo_+this.o},bar_:2};console.log(x.t());
 ```
 Mangle all properties matching a `regex` (not as unsafe but still unsafe):
 ```bash
-$ terser example.js -c -m --mangle-props regex=/_$/
+$ terser example.js -c passes=2 -m --mangle-props regex=/_$/
 ```
 ```javascript
-var x={o:0,_:1,calc:function(){return this._+this.o}};x.l=2,x.o=3,console.log(x.calc());
+var x={o:3,t:1,calc:function(){return this.t+this.o},i:2};console.log(x.calc());
 ```
 
 Combining mangle properties options:
 ```bash
-$ terser example.js -c -m --mangle-props regex=/_$/,reserved=[bar_]
+$ terser example.js -c passes=2 -m --mangle-props regex=/_$/,reserved=[bar_]
 ```
 ```javascript
-var x={o:0,_:1,calc:function(){return this._+this.o}};x.bar_=2,x.o=3,console.log(x.calc());
+var x={o:3,t:1,calc:function(){return this.t+this.o},bar_:2};console.log(x.calc());
 ```
 
-In order for this to be of any use, we avoid mangling standard JS names by
-default (`--mangle-props builtins` to override).
-
-A default exclusion file is provided in `tools/domprops.json` which should
-cover most standard JS and DOM properties defined in various browsers.  Pass
-`--mangle-props domprops` to disable this feature.
+In order for this to be of any use, we avoid mangling standard JS names and DOM
+API properties by default (`--mangle-props builtins` to override).
 
 A regular expression can be used to define which property names should be
 mangled.  For example, `--mangle-props regex=/^_/` will only mangle property
@@ -329,3 +341,4 @@ script to identify how a property got mangled. One technique is to pass a
 random number on every compile to simulate mangling changing with different
 inputs (e.g. as you update the input script with new properties), and to help
 identify mistakes like writing mangled keys to storage.
+

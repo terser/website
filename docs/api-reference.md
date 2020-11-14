@@ -4,26 +4,35 @@ title: API Reference
 sidebar_label: API Reference
 ---
 
+
 Assuming installation via NPM, you can load Terser in your application
 like this:
+
 ```javascript
-var Terser = require("terser");
+const { minify } = require("terser");
 ```
+
+Or,
+
+```javascript
+import { minify } from "terser";
+```
+
 Browser loading is also supported:
 ```html
 <script src="node_modules/source-map/dist/source-map.min.js"></script>
 <script src="dist/bundle.min.js"></script>
 ```
 
-There is a single high level function, **`minify(code, options)`**,
+There is a single async high level function, **`async minify(code, options)`**,
 which will perform all minification [phases](#minify-options) in a configurable
-manner. By default `minify()` will enable the options [`compress`](#compress-options)
+manner. There is no synchronous function, but this functionality can be achieved with a package like [deasync](https://github.com/abbr/deasync). By default `minify()` will enable the options [`compress`](#compress-options)
 and [`mangle`](#mangle-options). Example:
 ```javascript
 var code = "function add(first, second) { return first + second; }";
-var result = Terser.minify(code);
-console.log(result.error); // runtime error, or `undefined` if no error
+var result = await minify(code, { sourceMap: true });
 console.log(result.code);  // minified output: function add(n,d){return n+d}
+console.log(result.map);  // source map
 ```
 
 You can `minify` more than one JavaScript file at a time by using an object
@@ -34,7 +43,7 @@ var code = {
     "file1.js": "function add(first, second) { return first + second; }",
     "file2.js": "console.log(add(1 + 2, 3 + 4));"
 };
-var result = Terser.minify(code);
+var result = await minify(code);
 console.log(result.code);
 // function add(d,n){return d+n}console.log(add(3,7));
 ```
@@ -46,7 +55,7 @@ var code = {
     "file2.js": "console.log(add(1 + 2, 3 + 4));"
 };
 var options = { toplevel: true };
-var result = Terser.minify(code, options);
+var result = await minify(code, options);
 console.log(result.code);
 // console.log(3+7);
 ```
@@ -59,10 +68,10 @@ var options = {
     },
     nameCache: {}
 };
-var result1 = Terser.minify({
+var result1 = await minify({
     "file1.js": "function add(first, second) { return first + second; }"
 }, options);
-var result2 = Terser.minify({
+var result2 = await minify({
     "file2.js": "console.log(add(1 + 2, 3 + 4));"
 }, options);
 console.log(result1.code);
@@ -80,11 +89,11 @@ var options = {
     },
     nameCache: JSON.parse(fs.readFileSync(cacheFileName, "utf8"))
 };
-fs.writeFileSync("part1.js", Terser.minify({
+fs.writeFileSync("part1.js", await minify({
     "file1.js": fs.readFileSync("file1.js", "utf8"),
     "file2.js": fs.readFileSync("file2.js", "utf8")
 }, options).code, "utf8");
-fs.writeFileSync("part2.js", Terser.minify({
+fs.writeFileSync("part2.js", await minify({
     "file3.js": fs.readFileSync("file3.js", "utf8"),
     "file4.js": fs.readFileSync("file4.js", "utf8")
 }, options).code, "utf8");
@@ -105,47 +114,31 @@ var options = {
         },
         passes: 2
     },
-    output: {
-        beautify: false,
+    format: {
         preamble: "/* minified */"
     }
 };
-var result = Terser.minify(code, options);
+var result = await minify(code, options);
 console.log(result.code);
 // /* minified */
 // alert(10);"
 ```
 
-To produce warnings:
-```javascript
-var code = "function f(){ var u; return 2 + 3; }";
-var options = { warnings: true };
-var result = Terser.minify(code, options);
-console.log(result.error);    // runtime error, `undefined` in this case
-console.log(result.warnings); // [ 'Dropping unused variable u [0:1,18]' ]
-console.log(result.code);     // function f(){return 5}
-```
-
 An error example:
 ```javascript
-var result = Terser.minify({"foo.js" : "if (0) else console.log(1);"});
-console.log(JSON.stringify(result.error));
-// {"message":"Unexpected token: keyword (else)","filename":"foo.js","line":1,"col":7,"pos":7}
-```
-Note: unlike `uglify-js@2.x`, the Terser API does not throw errors.
-To achieve a similar effect one could do the following:
-```javascript
-var result = Terser.minify(code, options);
-if (result.error) throw result.error;
+try {
+    const result = await minify({"foo.js" : "if (0) else console.log(1);"});
+    // Do something with result
+} catch (error) {
+    const { message, filename, line, col, pos } = error;
+    // Do something with error
+}
 ```
 
 ## Minify options
 
-- `ecma` (default `undefined`) - pass `5`, `6`, `7` or `8` to override `parse`,
-  `compress` and `output` options.
-
-- `warnings` (default `false`) — pass `true` to return compressor warnings
-  in `result.warnings`. Use the value `"verbose"` for more detailed warnings.
+- `ecma` (default `undefined`) - pass `5`, `2015`, `2016`, etc to override
+  `compress` and `format`'s `ecma` options.
 
 - `parse` (default `{}`) — pass an object if you wish to specify some
   additional [parse options](#parse-options).
@@ -163,8 +156,8 @@ if (result.error) throw result.error;
   is implied and names can be mangled on the top scope. If `compress` or
   `mangle` is enabled then the `toplevel` option will be enabled.
 
-- `output` (default `null`) — pass an object if you wish to specify
-  additional [output options](#output-options).  The defaults are optimized
+- `format` or `output` (default `null`) — pass an object if you wish to specify
+  additional [format options](#format-options).  The defaults are optimized
   for best compression.
 
 - `sourceMap` (default `false`) - pass an object if you wish to specify
@@ -193,7 +186,7 @@ if (result.error) throw result.error;
 
 - `safari10` (default: `false`) - pass `true` to work around Safari 10/11 bugs in
   loop scoping and `await`. See `safari10` options in [`mangle`](#mangle-options)
-  and [`output`](#output-options) for details.
+  and [`format`](#format-options) for details.
 
 ## Minify options structure
 
@@ -212,13 +205,13 @@ if (result.error) throw result.error;
             // mangle property options
         }
     },
-    output: {
-        // output options
+    format: {
+        // format options (can also use `output` for backwards compatibility)
     },
     sourceMap: {
         // source map options
     },
-    ecma: 5, // specify one of: 5, 6, 7 or 8
+    ecma: 5, // specify one of: 5, 2015, 2016, etc.
     keep_classnames: false,
     keep_fnames: false,
     ie8: false,
@@ -226,7 +219,6 @@ if (result.error) throw result.error;
     nameCache: null, // or specify a name cache object
     safari10: false,
     toplevel: false,
-    warnings: false,
 }
 ```
 
@@ -234,7 +226,7 @@ if (result.error) throw result.error;
 
 To generate a source map:
 ```javascript
-var result = Terser.minify({"file1.js": "var a = function() {};"}, {
+var result = await minify({"file1.js": "var a = function() {};"}, {
     sourceMap: {
         filename: "out.js",
         url: "out.js.map"
@@ -255,7 +247,7 @@ be appended to code.
 
 You can also specify sourceRoot property to be included in source map:
 ```javascript
-var result = Terser.minify({"file1.js": "var a = function() {};"}, {
+var result = await minify({"file1.js": "var a = function() {};"}, {
     sourceMap: {
         root: "http://example.com/src",
         url: "out.js.map"
@@ -266,7 +258,7 @@ var result = Terser.minify({"file1.js": "var a = function() {};"}, {
 If you're compressing compiled JavaScript and have a source map for it, you
 can use `sourceMap.content`:
 ```javascript
-var result = Terser.minify({"compiled.js": "compiled code"}, {
+var result = await minify({"compiled.js": "compiled code"}, {
     sourceMap: {
         content: "content from compiled.js.map",
         url: "minified.js.map"
@@ -277,13 +269,11 @@ var result = Terser.minify({"compiled.js": "compiled code"}, {
 
 If you're using the `X-SourceMap` header instead, you can just omit `sourceMap.url`.
 
+If you happen to need the source map as a raw object, set `sourceMap.asObject` to `true`.
+
 ## Parse options
 
 - `bare_returns` (default `false`) -- support top level `return` statements
-
-- `ecma` (default: `8`) -- specify one of `5`, `6`, `7` or `8`. Note: this setting
-  is not presently enforced except for ES8 optional trailing commas in function
-  parameter lists and calls with `ecma` `8`.
 
 - `html5_comments` (default `true`)
 
@@ -291,9 +281,14 @@ If you're using the `X-SourceMap` header instead, you can just omit `sourceMap.u
 
 ## Compress options
 
-- `arrows` (default: `true`) -- Converts `()=>{return x}` to `()=>x`. Class
-  and object literal methods will also be converted to arrow expressions if
-  the resultant code is shorter: `m(){return x}` becomes `m:()=>x`.
+- `defaults` (default: `true`) -- Pass `false` to disable most default
+  enabled `compress` transforms. Useful when you only want to enable a few
+  `compress` options while disabling the rest.
+
+- `arrows` (default: `true`) -- Class and object literal methods are converted
+  will also be converted to arrow expressions if the resultant code is shorter:
+  `m(){return x}` becomes `m:()=>x`. To do this to regular ES5 functions which
+  don't use `this` or `arguments`, see `unsafe_arrows`.
 
 - `arguments` (default: `false`) -- replace `arguments[index]` with function
   parameter name whenever possible.
@@ -319,10 +314,6 @@ If you're using the `X-SourceMap` header instead, you can just omit `sourceMap.u
 
 - `dead_code` (default: `true`) -- remove unreachable code
 
-- `defaults` (default: `true`) -- Pass `false` to disable most default
-  enabled `compress` transforms. Useful when you only want to enable a few
-  `compress` options while disabling the rest.
-
 - `directives` (default: `true`) -- remove redundant or non-standard directives
 
 - `drop_console` (default: `false`) -- Pass `true` to discard calls to
@@ -332,7 +323,7 @@ If you're using the `X-SourceMap` header instead, you can just omit `sourceMap.u
 
 - `drop_debugger` (default: `true`) -- remove `debugger;` statements
 
-- `ecma` (default: `5`) -- Pass `6` or greater to enable `compress` options that
+- `ecma` (default: `5`) -- Pass `2015` or greater to enable `compress` options that
   will transform ES5 code into smaller ES6+ equivalent forms.
 
 - `evaluate` (default: `true`) -- attempt to evaluate constant expressions
@@ -414,11 +405,7 @@ If you're using the `X-SourceMap` header instead, you can just omit `sourceMap.u
   Specify `"strict"` to treat `foo.bar` as side-effect-free only when
   `foo` is certain to not throw, i.e. not `null` or `undefined`.
 
-- `reduce_funcs` (default: `true`) -- Allows single-use functions to be
-  inlined as function expressions when permissible allowing further
-  optimization.  Enabled by default.  Option depends on `reduce_vars`
-  being enabled.  Some code runs faster in the Chrome V8 engine if this
-  option is disabled.  Does not negatively impact other major browsers.
+- `reduce_funcs` (legacy option, safely ignored for backwards compatibility).
 
 - `reduce_vars` (default: `true`) -- Improve optimization on variables assigned with and
   used as constant values.
@@ -432,10 +419,8 @@ If you're using the `X-SourceMap` header instead, you can just omit `sourceMap.u
   occasions the default sequences limit leads to very slow compress times in which
   case a value of `20` or less is recommended.
 
-- `side_effects` (default: `true`) -- Pass `false` to disable potentially dropping
-  functions marked as "pure".  A function call is marked as "pure" if a comment
-  annotation `/*@__PURE__*/` or `/*#__PURE__*/` immediately precedes the call. For
-  example: `/*@__PURE__*/foo();`
+- `side_effects` (default: `true`) -- Remove expressions which have no side effects
+  and whose results aren't used.
 
 - `switches` (default: `true`) -- de-duplicate and remove unreachable `switch` branches
 
@@ -458,7 +443,7 @@ If you're using the `X-SourceMap` header instead, you can just omit `sourceMap.u
   expressions to arrow functions if the function body does not reference `this`.
   Note: it is not always safe to perform this conversion if code relies on the
   the function having a `prototype`, which arrow functions lack.
-  This transform requires that the `ecma` compress option is set to `6` or greater.
+  This transform requires that the `ecma` compress option is set to `2015` or greater.
 
 - `unsafe_comps` (default: `false`) -- Reverse `<` and `<=` to `>` and `>=` to
   allow improved compression. This might be unsafe when an at least one of two
@@ -472,6 +457,9 @@ If you're using the `X-SourceMap` header instead, you can just omit `sourceMap.u
 
 - `unsafe_math` (default: `false`) -- optimize numerical expressions like
   `2 * x * 3` into `6 * x`, which may give imprecise floating point results.
+
+- `unsafe_symbols` (default: `false`) -- removes keys from native Symbol 
+  declarations, e.g `Symbol("kDog")` becomes `Symbol()`.
 
 - `unsafe_methods` (default: false) -- Converts `{ m: function(){} }` to
   `{ m(){} }`. `ecma` must be set to `6` or greater to enable this transform.
@@ -492,9 +480,6 @@ If you're using the `X-SourceMap` header instead, you can just omit `sourceMap.u
 
 - `unused` (default: `true`) -- drop unreferenced functions and variables (simple
   direct variable assignments do not count as references unless set to `"keep_assign"`)
-
-- `warnings` (default: `false`) -- display warnings when dropping unreachable
-  code or unused declarations etc.
 
 ## Mangle options
 
@@ -522,7 +507,7 @@ If you're using the `X-SourceMap` header instead, you can just omit `sourceMap.u
 - `safari10` (default `false`) -- Pass `true` to work around the Safari 10 loop
   iterator [bug](https://bugs.webkit.org/show_bug.cgi?id=171041)
   "Cannot declare a let variable twice".
-  See also: the `safari10` [output option](#output-options).
+  See also: the `safari10` [format option](#format-options).
 
 Examples:
 
@@ -536,13 +521,13 @@ function funcName(firstLongName, anotherLongName) {
 ```javascript
 var code = fs.readFileSync("test.js", "utf8");
 
-Terser.minify(code).code;
+await minify(code).code;
 // 'function funcName(a,n){}var globalVar;'
 
-Terser.minify(code, { mangle: { reserved: ['firstLongName'] } }).code;
+await minify(code, { mangle: { reserved: ['firstLongName'] } }).code;
 // 'function funcName(firstLongName,a){}var globalVar;'
 
-Terser.minify(code, { mangle: { toplevel: true } }).code;
+await minify(code, { mangle: { toplevel: true } }).code;
 // 'function n(n,a){}var a;'
 ```
 
@@ -565,16 +550,21 @@ Terser.minify(code, { mangle: { toplevel: true } }).code;
 - `reserved` (default: `[]`) — Do not mangle property names listed in the
   `reserved` array.
 
-## Output options
+- `undeclared` (default: `false`) - Mangle those names when they are accessed
+  as properties of known top level variables but their declarations are never
+  found in input code. May be useful when only minifying parts of a project.
+  See [#397](https://github.com/terser/terser/issues/397) for more details.
 
-The code generator tries to output shortest code possible by default.  In
-case you want beautified output, pass `--beautify` (`-b`).  Optionally you
-can pass additional arguments that control the code output:
+
+## Format options
+
+These options control the format of Terser's output code. Previously known
+as "output options".
 
 - `ascii_only` (default `false`) -- escape Unicode characters in strings and
   regexps (affects directives with non-ascii characters becoming invalid)
 
-- `beautify` (default `true`) -- whether to actually beautify the output.
+- `beautify` (default `false`) -- whether to actually beautify the output.
   Passing `-b` will set this to true, but you might need to pass `-b` even
   when you want to generate minified code, in order to specify additional
   arguments, so you can use `-b beautify=false` to override it.
@@ -583,16 +573,17 @@ can pass additional arguments that control the code output:
   `do`, `while` or `with` statements, even if their body is a single
   statement.
 
-- `comments` (default `false`) -- pass `true` or `"all"` to preserve all
-  comments, `"some"` to preserve some comments, a regular expression string
+- `comments` (default `"some"`) -- by default it keeps JSDoc-style comments
+  that contain "@license" or "@preserve", pass `true` or `"all"` to preserve all
+  comments, `false` to omit comments in the output, a regular expression string
   (e.g. `/^!/`) or a function.
 
-- `ecma` (default `5`) -- set output printing mode. Set `ecma` to `6` or
-  greater to emit shorthand object properties - i.e.: `{a}` instead of `{a: a}`.
-  The `ecma` option will only change the output in direct control of the
-  beautifier. Non-compatible features in the abstract syntax tree will still
-  be output as is. For example: an `ecma` setting of `5` will **not** convert
-  ES6+ code to ES5.
+- `ecma` (default `5`) -- set desired EcmaScript standard version for output.
+  Set `ecma` to `2015` or greater to emit shorthand object properties - i.e.:
+  `{a}` instead of `{a: a}`.  The `ecma` option will only change the output in
+  direct control of the beautifier. Non-compatible features in your input will
+  still be output as is. For example: an `ecma` setting of `5` will **not**
+  convert modern code to ES5.
 
 - `indent_level` (default `4`)
 
@@ -600,6 +591,9 @@ can pass additional arguments that control the code output:
 
 - `inline_script` (default `true`) -- escape HTML comments and the slash in
   occurrences of `</script>` in strings
+
+- `keep_numbers` (default `false`) -- keep number literals as it was in original code
+ (disables optimizations like converting `1000000` into `1e6`)
 
 - `keep_quoted_props` (default `false`) -- when turned on, prevents stripping
   quotes from property names in object literals.
@@ -622,6 +616,8 @@ can pass additional arguments that control the code output:
   - `2` -- always use double quotes
   - `3` -- always use the original quotes
 
+- `preserve_annotations` -- (default `false`) -- Preserve [Terser annotations](#annotations) in the output.
+
 - `safari10` (default `false`) -- set this option to `true` to work around
   the [Safari 10/11 await bug](https://bugs.webkit.org/show_bug.cgi?id=176685).
   See also: the `safari10` [mangle option](#mangle-options).
@@ -639,6 +635,10 @@ can pass additional arguments that control the code output:
 - `wrap_iife` (default `false`) -- pass `true` to wrap immediately invoked
   function expressions. See
   [#640](https://github.com/mishoo/UglifyJS2/issues/640) for more details.
+
+- `wrap_func_args` (default `true`) -- pass `false` if you do not want to wrap
+  function expressions that are passed as arguments, in parenthesis. See
+  [OptimizeJS](https://github.com/nolanlawson/optimize-js) for more details.
 
 # Miscellaneous
 
@@ -698,10 +698,6 @@ if (DEBUG) {
 
 You can specify nested constants in the form of `--define env.DEBUG=false`.
 
-Terser will warn about the condition being always false and about dropping
-unreachable code; for now there is no option to turn off only this specific
-warning, you can pass `warnings=false` to turn off *all* warnings.
-
 Another way of doing that is to declare your globals as constants in a
 separate file and include it into the build.  For example you can have a
 `build/defines.js` file with the following:
@@ -727,7 +723,7 @@ You can also use conditional compilation via the programmatic API. With the diff
 property name is `global_defs` and is a compressor property:
 
 ```javascript
-var result = Terser.minify(fs.readFileSync("input.js", "utf8"), {
+var result = await minify(fs.readFileSync("input.js", "utf8"), {
     compress: {
         dead_code: true,
         global_defs: {
@@ -741,7 +737,7 @@ To replace an identifier with an arbitrary non-constant expression it is
 necessary to prefix the `global_defs` key with `"@"` to instruct Terser
 to parse the value as an expression:
 ```javascript
-Terser.minify("alert('hello');", {
+await minify("alert('hello');", {
     compress: {
         global_defs: {
             "@alert": "console.log"
@@ -753,7 +749,7 @@ Terser.minify("alert('hello');", {
 
 Otherwise it would be replaced as string literal:
 ```javascript
-Terser.minify("alert('hello');", {
+await minify("alert('hello');", {
     compress: {
         global_defs: {
             "alert": "console.log"
@@ -763,49 +759,27 @@ Terser.minify("alert('hello');", {
 // returns: '"console.log"("hello");'
 ```
 
-### Using native Terser AST with `minify()`
+### Annotations
+
+Annotations in Terser are a way to tell it to treat a certain function call differently. The following annotations are available:
+
+ * `/*@__INLINE__*/` - forces a function to be inlined somewhere.
+ * `/*@__NOINLINE__*/` - Makes sure the called function is not inlined into the call site.
+ * `/*@__PURE__*/` - Marks a function call as pure. That means, it can safely be dropped.
+
+You can use either a `@` sign at the start, or a `#`.
+
+Here are some examples on how to use them:
+
 ```javascript
-// example: parse only, produce native Terser AST
+/*@__INLINE__*/
+function_always_inlined_here()
 
-var result = Terser.minify(code, {
-    parse: {},
-    compress: false,
-    mangle: false,
-    output: {
-        ast: true,
-        code: false  // optional - faster if false
-    }
-});
+/*#__NOINLINE__*/
+function_cant_be_inlined_into_here()
 
-// result.ast contains native Terser AST
+const x = /*#__PURE__*/i_am_dropped_if_x_is_not_used()
 ```
-```javascript
-// example: accept native Terser AST input and then compress and mangle
-//          to produce both code and native AST.
-
-var result = Terser.minify(ast, {
-    compress: {},
-    mangle: {},
-    output: {
-        ast: true,
-        code: true  // optional - faster if false
-    }
-});
-
-// result.ast contains native Terser AST
-// result.code contains the minified code in string form.
-```
-
-### Working with Terser AST
-
-Traversal and transformation of the native AST can be performed through
-[`TreeWalker`](https://github.com/fabiosantoscode/terser/blob/master/lib/ast.js) and
-[`TreeTransformer`](https://github.com/fabiosantoscode/terser/blob/master/lib/transform.js)
-respectively.
-
-Largely compatible native AST examples can be found in the original UglifyJS
-documentation. See: [tree walker](http://lisperator.net/uglifyjs/walk) and
-[tree transform](http://lisperator.net/uglifyjs/transform).
 
 ### ESTree / SpiderMonkey AST
 
@@ -861,7 +835,7 @@ terser file.js -m
 ```
 To enable fast minify mode with the API use:
 ```js
-Terser.minify(code, { compress: false, mangle: true });
+await minify(code, { compress: false, mangle: true });
 ```
 
 #### Source maps and debugging
@@ -887,6 +861,8 @@ To allow for better optimizations, the compiler makes various assumptions:
 - Object properties can be added, removed and modified (not prevented with
   `Object.defineProperty()`, `Object.defineProperties()`, `Object.freeze()`,
   `Object.preventExtensions()` or `Object.seal()`).
+- `document.all` is not `== null`
+- Assigning properties to a class doesn't have side effects and does not throw.
 
 ### Build Tools and Adaptors using Terser
 
@@ -914,3 +890,4 @@ to remove the existing `yarn` lock file and reinstall all packages:
 $ rm -rf node_modules yarn.lock
 $ yarn
 ```
+

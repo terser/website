@@ -48,8 +48,8 @@ class Footer extends React.Component {
           <div>
             <h5>More</h5>
             <a href={`${this.props.config.baseUrl}blog`}>Blog</a>
-            <a href="https://github.com/terser-js">GitHub Org</a>
-            <a href="https://github.com/terser-js/terser">GitHub Repo</a>
+            <a href="https://github.com/terser">GitHub Org</a>
+            <a href="https://github.com/terser/terser">GitHub Repo</a>
             {this.props.config.twitterUsername && (
               <div className="social">
                 <a

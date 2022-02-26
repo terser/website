@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "JavaScript parser, mangler and compressor toolkit for ES6+",
+    "tagline": "JavaScript mangler and compressor toolkit for ES6+",
     "docs": {
       "api-reference": {
         "title": "API Reference",

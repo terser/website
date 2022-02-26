@@ -24,7 +24,7 @@ class HomeSplash extends React.Component {
 
     const Logo = props => (
       <div className="projectLogo">
-        <img src={props.img_src} alt="Project Logo" />
+        <h1><img src={props.img_src} alt="Terser" /></h1>
       </div>
     );
 
@@ -50,6 +50,12 @@ class HomeSplash extends React.Component {
       </div>
     );
 
+    const ExplanatoryText = props => (
+      <div className="explanatoryText">
+        {props.children}
+      </div>
+    )
+
     const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page;
 
     return (
@@ -61,6 +67,13 @@ class HomeSplash extends React.Component {
             <Button href="https://try.terser.org">Try It Out</Button>
           </PromoSection>
         </div>
+        <ExplanatoryText>
+          <p>Terser is an industry-standard minifier for JavaScript code.</p>
+          <p>It removes comments, makes variable names smaller, and removes whitespace.</p>
+          <p>Readable and maintainable code patterns are replaced with smaller code.</p>
+          <p>Some variable references and function calls can be inlined into the places they're used.</p>
+          <p>You can use it through the <a href="/docs/cli-usage">Command line</a> or <a href="/docs/api-usage">Node.JS API</a>.</p>
+        </ExplanatoryText>
       </SplashContainer>
     );
   }
@@ -86,7 +99,7 @@ class Index extends React.Component {
     );
 
     const TerserOutput = () => (
-      <img src="img/terser-output.png" alt="terser output" />
+      <img src="img/terser-output.png" className="terserOutputImg" alt="terser output" width="561" height="123" />
     );
 
     const Showcase = () => {
@@ -154,7 +167,6 @@ class Index extends React.Component {
       <div className="darkContainer">
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
-          <TerserOutput />
           <Showcase />
           <Sponsors />
         </div>

@@ -1,5 +1,10 @@
 /* your custom css */
 
+.projectLogo {
+  margin-top: 4em;
+  display: block;
+}
+
 .darkContainer {
   background-color: #20232a;
   color: #fff;
@@ -7,11 +12,6 @@
 
 .fixedHeaderContainer {
   background-color: #20232a;
-}
-
-.projectLogo {
-  margin-top: 2em;
-  display: block;
 }
 
 .post-meta {
@@ -23,20 +23,42 @@
   background-color: #000;
 }
 
+.terserOutputImg {
+  width: 100%;
+  height: auto;
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
+  .terserOutputImg {
+    display: block;
+  }
+}
+
+.explanatoryText {
+  text-align: left;
+  font-size: 1.2em;
+  max-width: 500px;
+  margin: 3em auto 0;
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 
 @media only screen and (min-width: 1024px) {
+  .homeContainer .homeWrapper .projectLogo {
+    position: unset;
+    display: block;
+  }
+  .homeContainer .homeWrapper .projectLogo img {
+    height: 150px;
+  }
 }
 
 @media only screen and (max-width: 1023px) {
 }
 
 @media only screen and (min-width: 1200px) {
-  .homeContainer .homeWrapper .projectLogo {
-    position: unset;
-    display: block;
-  }
 }
 
 @media only screen and (min-width: 1400px) {

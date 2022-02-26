@@ -29,9 +29,7 @@ class HomeSplash extends React.Component {
     );
 
     const ProjectTitle = () => (
-      <h2 className="projectTitle">
-        <small>{siteConfig.tagline}</small>
-      </h2>
+      <h2 className="projectTitle">{siteConfig.tagline}</h2>
     );
 
     const PromoSection = props => (
@@ -111,7 +109,7 @@ class Index extends React.Component {
         .filter(user => user.pinned)
         .map(user => (
           <a href={user.infoLink} key={user.infoLink}>
-            <img src={user.image} alt={user.caption} title={user.caption} />
+            <img src={user.image} alt={user.caption} title={user.caption} loading="lazy" />
           </a>
         ));
 
@@ -144,6 +142,7 @@ class Index extends React.Component {
               src={user.image || '/img/placeholder.svg'}
               alt={user.caption}
               title={user.caption}
+              loading="lazy"
             />
           </a>
         ));

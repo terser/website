@@ -5,6 +5,24 @@
   display: block;
 }
 
+.projectTitle {
+  font-size: 1.2em;
+}
+
+@media only screen and (min-width: 1024px) {
+  .projectTitle {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .promoSection .button {
+    font-size: 1em;
+    border-width: 2px;
+  }
+}
+
 .darkContainer {
   background-color: #20232a;
   color: #fff;
@@ -37,18 +55,27 @@
 
 .explanatoryText {
   text-align: left;
-  font-size: 1.2em;
-  max-width: 500px;
+  font-size: 1em;
+  max-width: 50ch;
   margin: 3em auto 0;
 }
 
-@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+.explanatoryText p {
+  margin: 1em 0 0 0;
+  line-height: 1.5em;
+}
+
+@media only screen and (min-width: 1024px) {
+  .explanatoryText {
+    font-size: 1.2em;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
   .homeContainer .homeWrapper .projectLogo {
     position: unset;
     display: block;
+    padding: 0 0 0.1rem 0;
   }
   .homeContainer .homeWrapper .projectLogo img {
     height: 150px;

@@ -92,7 +92,7 @@ const siteConfig = {
   /* path to images for header/footer */
   headerIcon: 'img/terser-square-logo.png',
   footerIcon: 'img/terser-square-logo.png',
-  favicon: 'img/favicon.ico',
+  favicon: 'favicon.ico',
 
   /* Colors for website */
   colors: {

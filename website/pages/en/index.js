@@ -70,7 +70,7 @@ class HomeSplash extends React.Component {
           <p>It removes comments, makes variable names smaller, and removes whitespace.</p>
           <p>Readable and maintainable code patterns are replaced with smaller code.</p>
           <p>Some variable references and function calls can be inlined into the places they're used.</p>
-          <p>You can use it through the <a href="/docs/cli-usage">Command line</a> or <a href="/docs/api-usage">Node.JS API</a>.</p>
+          <p>You can use it through the <a href="/docs/cli-usage">Command line</a> or <a href="/docs/api-reference">Node.JS API</a>.</p>
         </ExplanatoryText>
       </SplashContainer>
     );

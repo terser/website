@@ -121,7 +121,7 @@ class Index extends React.Component {
           <p>Terser is used by these projects</p>
           <div className="logos">{showcase}</div>
           <div className="more-users">
-            <a className="button" href={pageUrl('users.html')}>
+            <a className="button" href={pageUrl('users')}>
               More {siteConfig.title} Users
             </a>
           </div>
@@ -154,7 +154,7 @@ class Index extends React.Component {
           <h2>Sponsors / Patreons</h2>
           <div className="logos">{showcase}</div>
           <div className="more-users">
-            <a className="button" disabled href={pageUrl('sponsors.html')}>
+            <a className="button" disabled href={pageUrl('sponsors')}>
               More {siteConfig.title} Sponsors
             </a>
           </div>

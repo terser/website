@@ -151,7 +151,7 @@ class Index extends React.Component {
 
       return (
         <div className="productShowcaseSection paddingBottom">
-          <h2>Sponsors / Patreons</h2>
+          <h2>Patrons</h2>
           <div className="logos">{showcase}</div>
           <div className="more-users">
             <a className="button" disabled href={pageUrl('sponsors')}>
@@ -162,12 +162,52 @@ class Index extends React.Component {
       );
     };
 
+    const OCSponsors = () => {
+      return (
+        <div style={{maxWidth: 890, padding: '2ch', margin: 'auto'}} className="productShowcaseSection paddingBottom">
+          <h2>Code Contributors</h2>
+
+          <p>This project exists thanks to all the people who contribute. [<a href="CONTRIBUTING.md">Contribute</a>].</p>
+
+          <p>
+            <a href="https://github.com/terser/terser/graphs/contributors"><img src="https://opencollective.com/terser/contributors.svg?width=890&button=false" /></a>
+          </p>
+
+          <h2>Individual Financial Contributors</h2>
+
+          <p>Become a financial contributor and help us sustain our community. [<a href="https://opencollective.com/terser/contribute">Contribute</a>]</p>
+
+          <p>
+            <a href="https://opencollective.com/terser"><img src="https://opencollective.com/terser/individuals.svg?width=890" /></a>
+          </p>
+
+          <h2>Organization Financial Contributors</h2>
+
+          <p>Support this project with your organization. Your logo will show up here with a link to your website. [<a href="https://opencollective.com/terser/contribute">Contribute</a>]</p>
+
+          <p>
+            <a href="https://opencollective.com/terser/organization/0/website"><img src="https://opencollective.com/terser/organization/0/avatar.svg" /></a>
+            <a href="https://opencollective.com/terser/organization/1/website"><img src="https://opencollective.com/terser/organization/1/avatar.svg" /></a>
+            <a href="https://opencollective.com/terser/organization/2/website"><img src="https://opencollective.com/terser/organization/2/avatar.svg" /></a>
+            <a href="https://opencollective.com/terser/organization/3/website"><img src="https://opencollective.com/terser/organization/3/avatar.svg" /></a>
+            <a href="https://opencollective.com/terser/organization/4/website"><img src="https://opencollective.com/terser/organization/4/avatar.svg" /></a>
+            <a href="https://opencollective.com/terser/organization/5/website"><img src="https://opencollective.com/terser/organization/5/avatar.svg" /></a>
+            <a href="https://opencollective.com/terser/organization/6/website"><img src="https://opencollective.com/terser/organization/6/avatar.svg" /></a>
+            <a href="https://opencollective.com/terser/organization/7/website"><img src="https://opencollective.com/terser/organization/7/avatar.svg" /></a>
+            <a href="https://opencollective.com/terser/organization/8/website"><img src="https://opencollective.com/terser/organization/8/avatar.svg" /></a>
+            <a href="https://opencollective.com/terser/organization/9/website"><img src="https://opencollective.com/terser/organization/9/avatar.svg" /></a>
+          </p>
+        </div>
+      );
+    }
+
     return (
       <div className="darkContainer">
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
           <Showcase />
           <Sponsors />
+          <OCSponsors />
         </div>
       </div>
     );

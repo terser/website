@@ -13,6 +13,12 @@ in sequence and apply any compression options.  The files are parsed in the
 same global scope, that is, a reference from a file to some
 variable/function declared in another file will be matched properly.
 
+Command line arguments that take options (like --parse, --compress, --mangle and
+--format) can take in a comma-separated list of default option overrides. For
+instance:
+
+    terser input.js --compress ecma=2015,computed_props=false
+
 If no input file is specified, Terser will read from STDIN.
 
 If you wish to pass your options before the input files, separate the two with
@@ -74,8 +80,8 @@ a double dash to prevent input files being used as option arguments:
                                 as JSON to STDOUT respectively.
     --comments [filter]         Preserve copyright comments in the output. By
                                 default this works like Google Closure, keeping
-                                JSDoc-style comments that contain "@license" or
-                                "@preserve". You can optionally pass one of the
+                                JSDoc-style comments that contain e.g. "@license",
+                                or start with "!". You can optionally pass one of the
                                 following arguments to this flag:
                                 - "all" to keep all comments
                                 - `false` to omit comments in the output

@@ -1,18 +1,9 @@
 const React = require('react');
 
-const CompLibrary = require('../../core/CompLibrary.js');
-
-const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
-const Container = CompLibrary.Container;
-const GridBlock = CompLibrary.GridBlock;
-
 class HomeSplash extends React.Component {
   render() {
-    const { siteConfig, language = '' } = this.props;
-    const { baseUrl, docsUrl } = siteConfig;
-    const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
-    const langPart = `${language ? `${language}/` : ''}`;
-    const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
+    const { siteConfig } = this.props;
+    const { baseUrl } = siteConfig;
 
     const SplashContainer = props => (
       <div className="homeContainer">
@@ -54,8 +45,6 @@ class HomeSplash extends React.Component {
       </div>
     )
 
-    const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page;
-
     return (
       <SplashContainer>
         <Logo img_src={`${baseUrl}img/terser-banner-logo.png`} />
@@ -81,24 +70,6 @@ class Index extends React.Component {
   render() {
     const { config: siteConfig, language = '' } = this.props;
     const { baseUrl } = siteConfig;
-
-    const Block = props => (
-      <Container
-        padding={['bottom', 'top']}
-        id={props.id}
-        background={props.background}
-      >
-        <GridBlock
-          align="center"
-          contents={props.children}
-          layout={props.layout}
-        />
-      </Container>
-    );
-
-    const TerserOutput = () => (
-      <img src="img/terser-output.png" className="terserOutputImg" alt="terser output" width="561" height="123" />
-    );
 
     const Showcase = () => {
       if ((siteConfig.users || []).length === 0) {
@@ -205,6 +176,9 @@ class Index extends React.Component {
       <div className="darkContainer">
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
+          <div className="centeredAd">
+            <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CWYDK53W&amp;placement=terserorg" id="_carbonads_js"></script>
+          </div>
           <Showcase />
           <Sponsors />
           <OCSponsors />

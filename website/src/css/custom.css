@@ -1,26 +1,40 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+
+
 /* your custom css */
 
-.projectLogo {
-  margin-top: 4em;
-  display: block;
-}
-
 .projectTitle {
-  font-size: 1.2em;
-}
-
-@media only screen and (min-width: 1024px) {
-  .projectTitle {
-    font-size: 1.6em;
-    margin-bottom: 1em;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .promoSection .button {
-    font-size: 1em;
-    border-width: 2px;
-  }
+  font-size: 1.2rem;
 }
 
 .darkContainer {
@@ -55,21 +69,13 @@
 
 .explanatoryText {
   text-align: left;
-  max-width: 700px;
+  max-width: 500px;
+  font-size: 1.2rem;
   margin: 3em auto 0;
 }
 
-.productShowcaseSection p,
-.explanatoryText {
-  max-width: 700px;
-  font-size: 1.3em;
-  text-align: left;
-}
-
-@media only screen and (min-width: 1024px) {
-  .explanatoryText {
-    font-size: 1.5em;
-  }
+.footer__bottom {
+  margin-top: 3em;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -96,15 +102,6 @@
 }
 
 /* carbon ads */
-
-.centeredAd {
-  display: flex;
-  justify-content: center;
-}
-
-.centeredAd:has(#carbonads) {
-  margin-bottom: 5em;
-}
 
 #carbonads * {
   margin: initial;

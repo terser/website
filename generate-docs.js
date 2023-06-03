@@ -28,7 +28,7 @@ const readDemarcated = marker => {
 }
 
 const writeMd = (docFile, text, header) => {
-  const writePath = path.join(__dirname, 'docs', docFile)
+  const writePath = path.join(__dirname, 'website/docs', docFile)
   const docHeader = [
     '---',
     ...Object.entries(header).map(pair => pair.join(': ')),

@@ -68,7 +68,9 @@ const config = {
         title: 'Terser',
         logo: {
           alt: 'Terser logo',
-          src: 'img/terser-square-logo.png',
+          src: 'img/terser-square-logo.svg',
+          height: 32,
+          width: 32,
         },
         items: [
           {
@@ -83,7 +85,7 @@ const config = {
           },
           {
             href: 'https://try.terser.org',
-            label: 'Try it',
+            label: 'REPL',
             position: 'right',
           },
           {

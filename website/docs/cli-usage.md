@@ -5,7 +5,9 @@ sidebar_label: CLI Usage
 ---
 
 
-    terser [input files] [options]
+```
+terser [input files] [options]
+```
 
 Terser can take multiple input files.  It's recommended that you pass the
 input files first, then pass the options.  Terser will parse input files
@@ -17,14 +19,18 @@ Command line arguments that take options (like --parse, --compress, --mangle and
 --format) can take in a comma-separated list of default option overrides. For
 instance:
 
-    terser input.js --compress ecma=2015,computed_props=false
+```
+terser input.js --compress ecma=2015,computed_props=false
+```
 
 If no input file is specified, Terser will read from STDIN.
 
 If you wish to pass your options before the input files, separate the two with
 a double dash to prevent input files being used as option arguments:
 
-    terser --compress --mangle -- input.js
+```
+terser --compress --mangle -- input.js
+```
 
 ### Command line options
 

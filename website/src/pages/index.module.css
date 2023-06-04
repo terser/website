@@ -22,6 +22,17 @@
   }
 }
 
+.homeContent {
+  max-width: 890px;
+  padding: 2ch;
+  margin: 0px auto;
+}
+
+.homeContent h2 {
+  margin-top: 1.3em;
+  margin-bottom: 0.5em;
+}
+
 .centeredAd {
   display: flex;
   justify-content: center;
@@ -40,7 +51,8 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .logos > * {
   aspect-ratio: 1 / 1;

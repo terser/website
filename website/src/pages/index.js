@@ -12,7 +12,7 @@ class HomeSplash extends React.Component {
 
     const Logo = props => (
       <div className={styles.projectLogo}>
-        <h1><img src={props.img_src} alt="Terser" /></h1>
+        <h1><img src={props.img_src} alt="Terser" width={900} height={274} style={{height: 'auto'}} /></h1>
       </div>
     );
 
@@ -28,7 +28,7 @@ class HomeSplash extends React.Component {
 
     return (
       <div className={styles.heroBanner}>
-        <Logo img_src={`${baseUrl}img/terser-banner-logo.png`} />
+        <Logo img_src={`${baseUrl}img/terser-banner-logo.svg`} />
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
         </div>
@@ -46,8 +46,8 @@ export default class Index extends React.Component {
   render() {
     const { config: siteConfig, language = '' } = this.props;
 
-    const Section = props => <div className={styles.section}  style={{maxWidth: 890, padding: '2ch', margin: '0 auto' }} {...props} />;
-    const Logos = props => <div className={styles.logos} {...props} />;
+    const HomeContent = props => <div className={styles.homeContent} {...props} />;
+    const Logos = props => <p className={styles.logos} {...props} />;
 
     const Showcase = () => {
       if (users.length === 0) {
@@ -63,22 +63,22 @@ export default class Index extends React.Component {
         ));
 
       return (
-        <Section>
+        <>
           <h2>Who is Using Terser?</h2>
           <Logos>{showcase}</Logos>
-        </Section>
+        </>
       );
     };
 
     const OCSponsors = () => {
       return (
-        <Section>
+        <>
           <h2>Code Contributors</h2>
 
           <p>This project exists thanks to all the people who contribute. [<a href="https://github.com/terser/terser/blob/master/CONTRIBUTING.md">Contribute</a>].</p>
 
           <p>
-            <a href="https://github.com/terser/terser/graphs/contributors"><img src="https://opencollective.com/terser/contributors.svg?width=890&amp;button=false" /></a>
+            <a href="https://github.com/terser/terser/graphs/contributors"><img src="https://opencollective.com/terser/contributors.svg?width=890&amp;button=false" loading="lazy" /></a>
           </p>
 
           <h2>Individual Financial Contributors</h2>
@@ -86,7 +86,7 @@ export default class Index extends React.Component {
           <p>Become a financial contributor and help us sustain our community. [<a href="https://opencollective.com/terser/contribute">Contribute</a>]</p>
 
           <p>
-            <a href="https://opencollective.com/terser"><img src="https://opencollective.com/terser/individuals.svg?width=890" /></a>
+            <a href="https://opencollective.com/terser"><img src="https://opencollective.com/terser/individuals.svg?width=890" loading="lazy" /></a>
           </p>
 
           <h2>Organization Financial Contributors</h2>
@@ -94,18 +94,18 @@ export default class Index extends React.Component {
           <p>Support this project with your organization. Your logo will show up here with a link to your website. [<a href="https://opencollective.com/terser/contribute">Contribute</a>]</p>
 
           <p>
-            <a href="https://opencollective.com/terser/organization/0/website"><img src="https://opencollective.com/terser/organization/0/avatar.svg" /></a>
-            <a href="https://opencollective.com/terser/organization/1/website"><img src="https://opencollective.com/terser/organization/1/avatar.svg" /></a>
-            <a href="https://opencollective.com/terser/organization/2/website"><img src="https://opencollective.com/terser/organization/2/avatar.svg" /></a>
-            <a href="https://opencollective.com/terser/organization/3/website"><img src="https://opencollective.com/terser/organization/3/avatar.svg" /></a>
-            <a href="https://opencollective.com/terser/organization/4/website"><img src="https://opencollective.com/terser/organization/4/avatar.svg" /></a>
-            <a href="https://opencollective.com/terser/organization/5/website"><img src="https://opencollective.com/terser/organization/5/avatar.svg" /></a>
-            <a href="https://opencollective.com/terser/organization/6/website"><img src="https://opencollective.com/terser/organization/6/avatar.svg" /></a>
-            <a href="https://opencollective.com/terser/organization/7/website"><img src="https://opencollective.com/terser/organization/7/avatar.svg" /></a>
-            <a href="https://opencollective.com/terser/organization/8/website"><img src="https://opencollective.com/terser/organization/8/avatar.svg" /></a>
-            <a href="https://opencollective.com/terser/organization/9/website"><img src="https://opencollective.com/terser/organization/9/avatar.svg" /></a>
+            <a href="https://opencollective.com/terser/organization/0/website"><img src="https://opencollective.com/terser/organization/0/avatar.svg" loading="lazy" /></a>
+            <a href="https://opencollective.com/terser/organization/1/website"><img src="https://opencollective.com/terser/organization/1/avatar.svg" loading="lazy" /></a>
+            <a href="https://opencollective.com/terser/organization/2/website"><img src="https://opencollective.com/terser/organization/2/avatar.svg" loading="lazy" /></a>
+            <a href="https://opencollective.com/terser/organization/3/website"><img src="https://opencollective.com/terser/organization/3/avatar.svg" loading="lazy" /></a>
+            <a href="https://opencollective.com/terser/organization/4/website"><img src="https://opencollective.com/terser/organization/4/avatar.svg" loading="lazy" /></a>
+            <a href="https://opencollective.com/terser/organization/5/website"><img src="https://opencollective.com/terser/organization/5/avatar.svg" loading="lazy" /></a>
+            <a href="https://opencollective.com/terser/organization/6/website"><img src="https://opencollective.com/terser/organization/6/avatar.svg" loading="lazy" /></a>
+            <a href="https://opencollective.com/terser/organization/7/website"><img src="https://opencollective.com/terser/organization/7/avatar.svg" loading="lazy" /></a>
+            <a href="https://opencollective.com/terser/organization/8/website"><img src="https://opencollective.com/terser/organization/8/avatar.svg" loading="lazy" /></a>
+            <a href="https://opencollective.com/terser/organization/9/website"><img src="https://opencollective.com/terser/organization/9/avatar.svg" loading="lazy" /></a>
           </p>
-        </Section>
+        </>
       );
     }
 
@@ -128,22 +128,22 @@ export default class Index extends React.Component {
         ));
 
       return (
-        <Section>
+        <>
           <h2>Patrons</h2>
           <Logos>{showcase}</Logos>
-        </Section>
+        </>
       );
     };
 
     return (
       <Layout>
         <HomeSplash siteConfig={siteConfig} language={language} />
-        <div className="mainContainer">
+        <HomeContent>
           <div className={styles.centeredAd}><Ad /></div>
           <Showcase />
           <OCSponsors />
           <Sponsors />
-        </div>
+        </HomeContent>
       </Layout>
     );
   }

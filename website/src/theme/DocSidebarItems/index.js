@@ -7,7 +7,7 @@ export default function DocSidebarItemsWrapper(props) {
     <>
       <DocSidebarItems {...props} />
       <div style={{padding: '2ex 1ex'}}>
-        <Ad desktopOnly />
+        <Ad key={props.activePath} desktopOnly />
       </div>
     </>
   );

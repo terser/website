@@ -145,6 +145,12 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      algolia: {
+        // The application ID provided by Algolia
+        appId: '7ZWG7W7WUE',
+        apiKey: '1cb245a69775e2d0a25930e5626dde28',
+        indexName: 'terser',
+      },
     }),
 };
 

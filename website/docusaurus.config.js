@@ -146,7 +146,7 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       algolia: {
-        appId: '7ZWG7W7WUE',
+        appId: 'N8MO33ENBY',
         apiKey: '1cb245a69775e2d0a25930e5626dde28',
         indexName: 'terser',
       },

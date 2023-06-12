@@ -19,18 +19,14 @@ Command line arguments that take options (like --parse, --compress, --mangle and
 --format) can take in a comma-separated list of default option overrides. For
 instance:
 
-```
-terser input.js --compress ecma=2015,computed_props=false
-```
+    terser input.js --compress ecma=2015,computed_props=false
 
 If no input file is specified, Terser will read from STDIN.
 
 If you wish to pass your options before the input files, separate the two with
 a double dash to prevent input files being used as option arguments:
 
-```
-terser --compress --mangle -- input.js
-```
+    terser --compress --mangle -- input.js
 
 ### Command line options
 
@@ -65,6 +61,7 @@ terser --compress --mangle -- input.js
                                                `strict` disables quoted properties
                                                being automatically reserved.
                                 `regex`  Only mangle matched property names.
+                                `only_annotated` Only mangle properties defined with /*@__MANGLE_PROP__*/.
                                 `reserved`  List of names that should not be mangled.
     -f, --format [options]      Specify format options.
                                 `preamble`  Preamble to prepend to the output. You

@@ -148,8 +148,9 @@ const config = {
       },
       algolia: {
         appId: 'N8MO33ENBY',
-        apiKey: 'e47f32184a028d37f0d9842f0f8ade0f',
-        indexName: 'terser',
+        apiKey: '8ecfec7006145ef2530a9a241ee01fbb',
+        indexName: 'terser3',
+        contextualSearch: false,
       },
     }),
 };

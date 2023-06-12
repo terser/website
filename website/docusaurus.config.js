@@ -145,6 +145,11 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      algolia: {
+        appId: 'N8MO33ENBY',
+        apiKey: '1cb245a69775e2d0a25930e5626dde28',
+        indexName: 'terser',
+      },
     }),
 };
 

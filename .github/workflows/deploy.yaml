@@ -21,13 +21,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
 
       - name: Cache Gradle packages
         uses: actions/cache@v3
         with:
           key: docs-cache-${{ hashFiles('website/package-lock.json') }}
           path: |
+            ~/.cache/npm
             .docusaurus
 
       - name: Install packages
@@ -42,3 +42,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+          external_repository: terser/terser.github.io
+          publish_branch: master

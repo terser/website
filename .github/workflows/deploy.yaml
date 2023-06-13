@@ -1,0 +1,30 @@
+name: 'Deploy docs'
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    name: 'Deploy docs with npm run deploy'
+    runs-on: ubuntu
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          key: docs-cache-${{ hashFiles('website/package-lock.json') }}
+          path: |
+            ~/.npm
+            ./website/.docusaurus
+
+      - npm ci
+
+      - npm run deploy

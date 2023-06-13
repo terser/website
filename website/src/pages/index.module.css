@@ -13,7 +13,7 @@
 .projectLogo {
   text-align: center;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 1em auto 0;
 }
 
 @media screen and (max-width: 996px) {
@@ -31,13 +31,43 @@
 .homeContent h2 {
   margin-top: 1.3em;
   margin-bottom: 0.5em;
+  font-size: 1.4rem;
+}
+
+.homeContent p {
+  font-size: 1.2rem;
+}
+
+h2.tagLine {
+  margin: 0;
+}
+
+.explanatoryText {
+  margin-top: 3em;
+  text-align: left;
+}
+
+@media only screen and (min-width: 800px) {
+  .explanatoryText {
+    display: flex;
+  }
+
+  .explanatoryText > * {
+    flex: 1 0;
+  }
+
+  .explanatoryText > p + p {
+    border-left: 1px solid gray;
+    margin-left: 2ex;
+    padding-left: 2ex;
+  }
 }
 
 .centeredAd {
   display: flex;
   justify-content: center;
   min-height: 150px;
-  margin-bottom: 5em;
+  margin-bottom: 3em;
 }
 
 .buttons {
@@ -54,6 +84,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 .logos > * {
   aspect-ratio: 1 / 1;
   width: calc(20% - 2ex);

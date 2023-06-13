@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
+import cx from 'classnames';
 
 import styles from './index.module.css';
 import Ad from '../components/Ad';
@@ -16,25 +17,23 @@ class HomeSplash extends React.Component {
       </div>
     );
 
-    const ProjectTitle = () => (
-      <h2 className="projectTitle">{siteConfig.tagline}</h2>
+    const TagLine = () => (
+      <h2 className={cx(styles.tagLine)}>{siteConfig.tagline}</h2>
     );
 
     const ExplanatoryText = props => (
-      <div className="explanatoryText">
+      <div className={styles.explanatoryText}>
         {props.children}
       </div>
     )
 
     return (
-      <div className={styles.heroBanner}>
+      <div className={cx(styles.homeContent, styles.heroBanner)}>
         <Logo img_src={`${baseUrl}img/terser-banner-logo.svg`} />
-        <div className="inner">
-          <ProjectTitle siteConfig={siteConfig} />
-        </div>
+        <TagLine siteConfig={siteConfig} />
         <ExplanatoryText>
           <p>Terser is an industry-standard minifier for JavaScript code.</p>
-          <p>It shrinks variable names, removes whitespace and comments, and can locate and remove unused code.</p>
+          <p>It shrinks variable names, removes whitespace and comments, and drops unused code.</p>
           <p>You can use it through the <a href="/docs/cli-usage">Command line</a> or <a href="/docs/api-reference">Node.JS API</a>.</p>
         </ExplanatoryText>
       </div>

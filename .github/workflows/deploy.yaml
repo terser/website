@@ -7,6 +7,8 @@ on:
 jobs:
   deploy:
     name: 'Deploy docs with npm run deploy'
+    permissions:
+      contents: write
     runs-on: ubuntu-22.04
     defaults:
       run:
@@ -19,17 +21,24 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: npm
 
       - name: Cache Gradle packages
         uses: actions/cache@v3
         with:
           key: docs-cache-${{ hashFiles('website/package-lock.json') }}
           path: |
-            ~/.npm
             .docusaurus
 
       - name: Install packages
         run: npm ci
 
+      - name: Build the docs
+        run: npm run build
+
       - name: Deploy docs to terser/terser.github.io
-        run: npm run deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/master'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build

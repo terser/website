@@ -25,6 +25,8 @@ jobs:
             ~/.npm
             ./website/.docusaurus
 
-      - npm ci
+      - name: Install packages
+        run: npm ci
 
-      - npm run deploy
+      - name: Deploy docs to terser/terser.github.io
+        run: npm run deploy

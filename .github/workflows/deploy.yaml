@@ -10,9 +10,6 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-22.04
-    defaults:
-      run:
-        working-directory: website
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -21,13 +18,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: npm
 
-      - name: Cache Gradle packages
+      - name: Cache packages
         uses: actions/cache@v3
         with:
-          key: docs-cache-${{ hashFiles('website/package-lock.json') }}
+          key: docs-cache-${{ hashFiles('package-lock.json') }}
           path: |
-            ~/.cache/npm
             .docusaurus
 
       - name: Install packages

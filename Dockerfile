@@ -1,9 +1,9 @@
 FROM node:20
 
-WORKDIR /app/website
+WORKDIR /app
 
 EXPOSE 3000 35729
-COPY ./website /app/website
+COPY . /app
 RUN npm ci
 
 CMD ["yarn", "start", "--host", "0.0.0.0"]

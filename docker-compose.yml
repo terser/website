@@ -7,10 +7,10 @@ services:
       - 3000:3000
       - 35729:35729
     volumes:
-      - ./website/blog:/app/website/blog
-      - ./website/docs:/app/website/docs
-      - ./website/src:/app/website/src
-      - ./website/static:/app/website/static
-      - ./website/docusaurus.config.js:/app/website/docusaurus.config.js
-      - ./website/sidebars.js:/app/website/sidebars.js
-    working_dir: /app/website
+      - ./blog:/app/blog
+      - ./docs:/app/docs
+      - ./src:/app/src
+      - ./static:/app/static
+      - ./docusaurus.config.js:/app/docusaurus.config.js
+      - ./sidebars.js:/app/sidebars.js
+    working_dir: /app

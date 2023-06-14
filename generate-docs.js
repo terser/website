@@ -70,6 +70,7 @@ const writeMd = (docFile, text, header) => {
 let markdowns = {
   'api-reference': readDemarcated('API_REFERENCE'),
   'cli-usage': readDemarcated('CLI_USAGE'),
+  'options': readDemarcated('OPTIONS'),
   'reporting-issues': readDemarcated('REPORTING_ISSUES'),
   'miscellaneous': readDemarcated('MISCELLANEOUS'),
 }
@@ -85,6 +86,11 @@ writeMd('cli-usage.md', markdowns['cli-usage'], {
   id: 'cli-usage',
   title: 'CLI Usage',
   sidebar_label: 'CLI Usage'
+})
+writeMd('options.md', markdowns['options'], {
+  id: 'options',
+  title: 'Options',
+  sidebar_label: 'Options'
 })
 writeMd('reporting-issues.md', markdowns['reporting-issues'], {
   id: 'reporting-issues',

@@ -187,7 +187,7 @@ the sources.
 ## CLI compress options
 
 You need to pass `--compress` (`-c`) to enable the compressor.  Optionally
-you can pass a comma-separated list of [compress options](/docs/api-reference#compress-options).
+you can pass a comma-separated list of [compress options](/docs/options#compress-options).
 
 Options are in the form `foo=bar`, or just `foo` (the latter implies
 a boolean option that you want to set `true`; it's effectively a

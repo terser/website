@@ -85,6 +85,11 @@ const config = {
             position: 'left',
           },
           {
+            href: '/docs/options',
+            label: 'Options',
+            position: 'left',
+          },
+          {
             href: 'https://try.terser.org',
             label: 'REPL',
             position: 'right',

@@ -25,9 +25,9 @@ Browser loading is also supported:
 ```
 
 There is a single async high level function, **`async minify(code, options)`**,
-which will perform all minification [phases](#minify-options) in a configurable
-manner. By default `minify()` will enable [`compress`](#compress-options)
-and [`mangle`](#mangle-options). Example:
+which will perform all minification [phases](/docs/api-reference#minify-options) in a configurable
+manner. By default `minify()` will enable [`compress`](/docs/api-reference#compress-options)
+and [`mangle`](/docs/api-reference#mangle-options). Example:
 ```javascript
 var code = "function add(first, second) { return first + second; }";
 var result = await minify(code, { sourceMap: true });
@@ -146,27 +146,27 @@ try {
   function with the configurable arguments and values.
 
 - `parse` (default `{}`) — pass an object if you wish to specify some
-  additional [parse options](#parse-options).
+  additional [parse options](/docs/api-reference#parse-options).
 
 - `compress` (default `{}`) — pass `false` to skip compressing entirely.
-  Pass an object to specify custom [compress options](#compress-options).
+  Pass an object to specify custom [compress options](/docs/api-reference#compress-options).
 
 - `mangle` (default `true`) — pass `false` to skip mangling names, or pass
-  an object to specify [mangle options](#mangle-options) (see below).
+  an object to specify [mangle options](/docs/api-reference#mangle-options) (see below).
 
   - `mangle.properties` (default `false`) — a subcategory of the mangle option.
-    Pass an object to specify custom [mangle property options](#mangle-properties-options).
+    Pass an object to specify custom [mangle property options](/docs/api-reference#mangle-properties-options).
 
 - `module` (default `false`) — Use when minifying an ES6 module. "use strict"
   is implied and names can be mangled on the top scope. If `compress` or
   `mangle` is enabled then the `toplevel` option will be enabled.
 
 - `format` or `output` (default `null`) — pass an object if you wish to specify
-  additional [format options](#format-options).  The defaults are optimized
+  additional [format options](/docs/api-reference#format-options).  The defaults are optimized
   for best compression.
 
 - `sourceMap` (default `false`) - pass an object if you wish to specify
-  [source map options](#source-map-options).
+  [source map options](/docs/api-reference#source-map-options).
 
 - `toplevel` (default `false`) - set to `true` if you wish to enable top level
   variable and function name mangling and to drop unused variables and functions.
@@ -190,8 +190,8 @@ try {
   minify option `keep_fnames`.
 
 - `safari10` (default: `false`) - pass `true` to work around Safari 10/11 bugs in
-  loop scoping and `await`. See `safari10` options in [`mangle`](#mangle-options)
-  and [`format`](#format-options) for details.
+  loop scoping and `await`. See `safari10` options in [`mangle`](/docs/api-reference#mangle-options)
+  and [`format`](/docs/api-reference#format-options) for details.
 
 ## Minify options structure
 
@@ -340,7 +340,7 @@ If you happen to need the source map as a raw object, set `sourceMap.asObject` t
 - `expression` (default: `false`) -- Pass `true` to preserve completion values
   from terminal statements without `return`, e.g. in bookmarklets.
 
-- `global_defs` (default: `{}`) -- see [conditional compilation](#conditional-compilation)
+- `global_defs` (default: `{}`) -- see [conditional compilation](/docs/miscellaneous#conditional-compilation)
 
 - `hoist_funs` (default: `false`) -- hoist function declarations
 
@@ -367,7 +367,7 @@ If you happen to need the source map as a raw object, set `sourceMap.asObject` t
 
 - `keep_classnames` (default: `false`) -- Pass `true` to prevent the compressor from
   discarding class names. Pass a regular expression to only keep class names matching
-  that regex. See also: the `keep_classnames` [mangle option](#mangle-options).
+  that regex. See also: the `keep_classnames` [mangle option](/docs/api-reference#mangle-options).
 
 - `keep_fargs` (default: `true`) -- Prevents the compressor from discarding unused
   function arguments.  You need this for code which relies on `Function.length`.
@@ -375,7 +375,7 @@ If you happen to need the source map as a raw object, set `sourceMap.asObject` t
 - `keep_fnames` (default: `false`) -- Pass `true` to prevent the
   compressor from discarding function names. Pass a regular expression to only keep
   function names matching that regex. Useful for code relying on `Function.prototype.name`.
-  See also: the `keep_fnames` [mangle option](#mangle-options).
+  See also: the `keep_fnames` [mangle option](/docs/api-reference#mangle-options).
 
 - `keep_infinity` (default: `false`) -- Pass `true` to prevent `Infinity` from
   being compressed into `1/0`, which may cause performance issues on Chrome.
@@ -451,7 +451,7 @@ If you happen to need the source map as a raw object, set `sourceMap.asObject` t
   earlier versions due to known issues.
 
 - `unsafe` (default: `false`) -- apply "unsafe" transformations
-  ([details](#the-unsafe-compress-option)).
+  ([details](/docs/miscellaneous#the-unsafe-compress-option)).
 
 - `unsafe_arrows` (default: `false`) -- Convert ES5 style anonymous function
   expressions to arrow functions if the function body does not reference `this`.
@@ -502,12 +502,12 @@ If you happen to need the source map as a raw object, set `sourceMap.asObject` t
 
 - `keep_classnames` (default `false`) -- Pass `true` to not mangle class names.
   Pass a regular expression to only keep class names matching that regex.
-  See also: the `keep_classnames` [compress option](#compress-options).
+  See also: the `keep_classnames` [compress option](/docs/api-reference#compress-options).
 
 - `keep_fnames` (default `false`) -- Pass `true` to not mangle function names.
   Pass a regular expression to only keep function names matching that regex.
   Useful for code relying on `Function.prototype.name`. See also: the `keep_fnames`
-  [compress option](#compress-options).
+  [compress option](/docs/api-reference#compress-options).
 
 - `module` (default `false`) -- Pass `true` an ES6 modules, where the toplevel
   scope is not the global scope. Implies `toplevel`.
@@ -527,7 +527,7 @@ If you happen to need the source map as a raw object, set `sourceMap.asObject` t
 - `safari10` (default `false`) -- Pass `true` to work around the Safari 10 loop
   iterator [bug](https://bugs.webkit.org/show_bug.cgi?id=171041)
   "Cannot declare a let variable twice".
-  See also: the `safari10` [format option](#format-options).
+  See also: the `safari10` [format option](/docs/api-reference#format-options).
 
 Examples:
 
@@ -639,11 +639,11 @@ as "output options".
   - `2` -- always use double quotes
   - `3` -- always use the original quotes
 
-- `preserve_annotations` -- (default `false`) -- Preserve [Terser annotations](#annotations) in the output.
+- `preserve_annotations` -- (default `false`) -- Preserve [Terser annotations](/docs/miscellaneous#annotations) in the output.
 
 - `safari10` (default `false`) -- set this option to `true` to work around
   the [Safari 10/11 await bug](https://bugs.webkit.org/show_bug.cgi?id=176685).
-  See also: the `safari10` [mangle option](#mangle-options).
+  See also: the `safari10` [mangle option](/docs/api-reference#mangle-options).
 
 - `semicolons` (default `true`) -- separate statements with semicolons.  If
   you pass `false` then whenever possible we will use a newline instead of a

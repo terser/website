@@ -48,3 +48,8 @@ writeMd('cli-usage.md', readDemarcated('CLI_USAGE'), {
   title: 'CLI Usage',
   sidebar_label: 'CLI Usage'
 })
+writeMd('reporting-issues.md', readDemarcated('REPORTING_ISSUES'), {
+  id: 'reporting-issues',
+  title: 'Reporting Issues',
+  sidebar_label: 'Reporting Issues'
+})

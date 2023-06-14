@@ -53,3 +53,8 @@ writeMd('reporting-issues.md', readDemarcated('REPORTING_ISSUES'), {
   title: 'Reporting Issues',
   sidebar_label: 'Reporting Issues'
 })
+writeMd('miscellaneous.md', readDemarcated('MISCELLANEOUS'), {
+  id: 'miscellaneous',
+  title: 'Miscellaneous',
+  sidebar_label: 'Miscellaneous'
+})

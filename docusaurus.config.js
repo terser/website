@@ -75,18 +75,21 @@ const config = {
         },
         items: [
           {
-            href: '/docs/api-reference',
             label: 'API Docs',
+            type: 'doc',
+            docId: 'api-reference',
             position: 'left',
           },
           {
-            href: '/docs/cli-usage',
             label: 'CLI Docs',
+            type: 'doc',
+            docId: 'cli-usage',
             position: 'left',
           },
           {
-            href: '/docs/options',
             label: 'Options',
+            type: 'doc',
+            docId: 'options',
             position: 'left',
           },
           {

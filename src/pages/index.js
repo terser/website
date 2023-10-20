@@ -30,7 +30,7 @@ class HomeSplash extends React.Component {
     return (
       <div className={cx(styles.homeContent, styles.heroBanner)}>
         <Logo img_src={`${baseUrl}img/terser-banner-logo.svg`} />
-        <TagLine siteConfig={siteConfig} />
+        <TagLine />
         <ExplanatoryText>
           <p>Terser is an industry-standard minifier for JavaScript code.</p>
           <p>It shrinks variable names, removes whitespace and comments, and drops unused code.</p>

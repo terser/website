@@ -20,13 +20,6 @@ export const users = [
     pinned: true
   },
   {
-    caption: 'Next.js',
-    image: '/img/next.svg',
-    fillBackground: true,
-    infoLink: 'https://nextjs.org/',
-    pinned: true
-  },
-  {
     caption: 'Parcel',
     image: '/img/parcel.png',
     infoLink: 'https://parceljs.org',

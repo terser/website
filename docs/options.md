@@ -54,9 +54,8 @@ sidebar_label: Options
 - `directives` (default: `true`) -- remove redundant or non-standard directives
 
 - `drop_console` (default: `false`) -- Pass `true` to discard calls to
-  `console.*` functions. If you wish to drop a specific function call
-  such as `console.info` and/or retain side effects from function arguments
-  after dropping the function call then use `pure_funcs` instead.
+  `console.*` functions. If you only want to discard a portion of console, 
+   you can pass an array like this `['log', 'info']`, which will only discard `console.log`、 `console.info`.
 
 - `drop_debugger` (default: `true`) -- remove `debugger;` statements
 
@@ -144,6 +143,9 @@ sidebar_label: Options
   (e.g. `foo.bar` or `foo["bar"]`) doesn't have any side effects.
   Specify `"strict"` to treat `foo.bar` as side-effect-free only when
   `foo` is certain to not throw, i.e. not `null` or `undefined`.
+
+- `pure_new` (default: `false`) -- Set to `true` to assume `new X()` never has
+  side effects.
 
 - `reduce_vars` (default: `true`) -- Improve optimization on variables assigned with and
   used as constant values.
@@ -238,7 +240,7 @@ sidebar_label: Options
   [compress option](/docs/options#compress-options).
 
 - `module` (default `false`) -- Pass `true` an ES6 modules, where the toplevel
-  scope is not the global scope. Implies `toplevel`.
+  scope is not the global scope. Implies `toplevel` and assumes input code is strict mode JS.
 
 - `nth_identifier` (default: an internal mangler that weights based on character
   frequency analysis) -- Pass an object with a `get(n)` function that converts an

@@ -1,4 +1,4 @@
-export const openCollectiveSponsors = require('./sponsors.json')
+export const openCollectiveSponsors = require('./top-finantial-backers.json')
 
 // See https://docusaurus.io/docs/site-config for all the possible
 // site configuration options.
@@ -32,18 +32,3 @@ export const users = [
     pinned: true
   }
 ];
-
-export const sponsors = [
-  {
-    caption: 'CKEditor',
-    image: 'https://avatars.githubusercontent.com/u/825710?s=200&v=4',
-    infoLink: 'https://ckeditor.com',
-    pinned: true
-  },
-  {
-    caption: '38elements',
-    image: 'https://avatars2.githubusercontent.com/u/2399132?s=460&v=4',
-    infoLink: 'https://github.com/38elements',
-    pinned: true
-  }
-].concat(openCollectiveSponsors);

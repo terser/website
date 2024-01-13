@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 import styles from './index.module.css';
 import Ad from '../components/Ad';
-import { sponsors, users } from '../data/indexData';
+import { openCollectiveSponsors, users } from '../data/indexData';
 
 class HomeSplash extends React.Component {
   render() {
@@ -14,6 +14,41 @@ class HomeSplash extends React.Component {
     const Logo = props => (
       <div className={styles.projectLogo}>
         <h1><img src={props.img_src} alt="Terser" width={900} height={274} style={{height: 'auto'}} /></h1>
+      </div>
+    );
+
+    const FinancialDonors = () => (
+      <div className={styles.financialDonors}>
+        <h3>
+          <a
+            href="https://opencollective.com/terser"
+            className={styles.financialDonorsButton}
+          >
+            Top recent financial contributors
+          </a>
+        </h3>
+        {openCollectiveSponsors.map((sponsor, index) => (
+            <a href={sponsor.infoLink} key={index}>
+              {
+                sponsor.image
+                  ? (
+                    <img
+                      src={sponsor.image}
+                      alt={sponsor.caption}
+                      title={sponsor.caption}
+                      className={styles.backerLogo}
+                      loading="lazy"
+                    />
+                  )
+                  : (
+                    <span className={styles.backerNoLogo}>
+                      {sponsor.caption}
+                    </span>
+                  )
+              }
+            </a>
+        ))}
+        <span />
       </div>
     );
 
@@ -31,6 +66,7 @@ class HomeSplash extends React.Component {
       <div className={cx(styles.homeContent, styles.heroBanner)}>
         <Logo img_src={`${baseUrl}img/terser-banner-logo.svg`} />
         <TagLine />
+        <FinancialDonors />
         <ExplanatoryText>
           <p>Terser is an industry-standard minifier for JavaScript code.</p>
           <p>It shrinks variable names, removes whitespace and comments, and drops unused code.</p>
@@ -108,32 +144,6 @@ export default class Index extends React.Component {
       );
     }
 
-    const Sponsors = () => {
-      if (sponsors.length === 0) {
-        return null;
-      }
-
-      const showcase = sponsors
-        .filter(user => user.pinned)
-        .map(user => (
-          <a href={user.infoLink} key={user.infoLink}>
-            <img
-              src={user.image || '/img/placeholder.svg'}
-              alt={user.caption}
-              title={user.caption}
-              loading="lazy"
-            />
-          </a>
-        ));
-
-      return (
-        <>
-          <h2>Patrons</h2>
-          <Logos>{showcase}</Logos>
-        </>
-      );
-    };
-
     return (
       <Layout>
         <HomeSplash siteConfig={siteConfig} language={language} />
@@ -141,7 +151,6 @@ export default class Index extends React.Component {
           <div className={styles.centeredAd}><Ad /></div>
           <Showcase />
           <OCSponsors />
-          <Sponsors />
         </HomeContent>
       </Layout>
     );

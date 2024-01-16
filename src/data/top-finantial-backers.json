@@ -5,6 +5,11 @@
     "infoLink": "https://www.airbnb.com/"
   },
   {
+    "caption": "Gumlet",
+    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/44b7a290-3d83-406d-b854-2478b7e5c03b/round-logo.jpg",
+    "infoLink": "https://www.gumlet.com"
+  },
+  {
     "caption": "Daniel Troger",
     "image": null,
     "infoLink": "https://opencollective.com/daniel-troger"
@@ -18,10 +23,5 @@
     "caption": "Proxidize",
     "image": "https://logo.clearbit.com/proxidize.com",
     "infoLink": "https://proxidize.com/"
-  },
-  {
-    "caption": "龙腾道",
-    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/bed6a620-0fe0-11e9-99e0-6f74a2a82c81.png",
-    "infoLink": "https://www.LongTengDao.com/"
   }
 ]

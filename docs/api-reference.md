@@ -24,7 +24,7 @@ Browser loading is also supported. It exposes a global variable `Terser` contain
 <script src="https://cdn.jsdelivr.net/npm/terser/dist/bundle.min.js"></script>
 ```
 
-There is a single async high level function, **`async minify(code, options)`**,
+There is an async high level function, **`async minify(code, options)`**,
 which will perform all minification [phases](/docs/api-reference#minify-options) in a configurable
 manner. By default `minify()` will enable [`compress`](/docs/options#compress-options)
 and [`mangle`](/docs/options#mangle-options). Example:
@@ -34,6 +34,8 @@ var result = await minify(code, { sourceMap: true });
 console.log(result.code);  // minified output: function add(n,d){return n+d}
 console.log(result.map);  // source map
 ```
+
+There is also a `minify_sync()` alternative version of it, which returns instantly.
 
 You can `minify` more than one JavaScript file at a time by using an object
 for the first argument where the keys are file names and the values are source

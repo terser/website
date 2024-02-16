@@ -5,11 +5,6 @@
     "infoLink": "https://www.airbnb.com/"
   },
   {
-    "caption": "Gumlet",
-    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/44b7a290-3d83-406d-b854-2478b7e5c03b/round-logo.jpg",
-    "infoLink": "https://www.gumlet.com"
-  },
-  {
     "caption": "Daniel Troger",
     "image": null,
     "infoLink": "https://opencollective.com/daniel-troger"
@@ -23,5 +18,10 @@
     "caption": "Proxidize",
     "image": "https://logo.clearbit.com/proxidize.com",
     "infoLink": "https://proxidize.com/"
+  },
+  {
+    "caption": "Blastup",
+    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/8838155f-d39f-4c6a-8dbe-603940c8bb29/favicon--dark.jpg",
+    "infoLink": "https://blastup.com"
   }
 ]

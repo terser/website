@@ -1,13 +1,13 @@
 [
   {
-    "caption": "Blastup",
-    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/8838155f-d39f-4c6a-8dbe-603940c8bb29/favicon--dark.jpg",
-    "infoLink": "https://blastup.com"
-  },
-  {
     "caption": "Proxidize",
     "image": "https://logo.clearbit.com/proxidize.com",
     "infoLink": "https://proxidize.com/"
+  },
+  {
+    "caption": "Blastup",
+    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/8838155f-d39f-4c6a-8dbe-603940c8bb29/favicon--dark.jpg",
+    "infoLink": "https://blastup.com"
   },
   {
     "caption": "Celebian",

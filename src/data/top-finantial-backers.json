@@ -1,13 +1,13 @@
 [
   {
+    "caption": "Airbnb",
+    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/0b26a840-d57a-11e9-a92b-dfce8d6cf8c1.png",
+    "infoLink": "https://www.airbnb.com/"
+  },
+  {
     "caption": "Poprey",
     "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/c6128850-20c0-4578-aecb-9ae9942bea95/logo-200.png",
     "infoLink": "https://poprey.com/buy-instagram-followers"
-  },
-  {
-    "caption": "Buy Instagram Followers Twicsy",
-    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/f07b6f83-d0ed-43c6-91ae-ec8fa90512cd/twicsy-followers.png",
-    "infoLink": "https://twicsy.com/buy-instagram-followers"
   },
   {
     "caption": "Guidebook.BetWinner",
@@ -15,13 +15,13 @@
     "infoLink": "https://guidebook.betwinner.com/"
   },
   {
-    "caption": "BestKru",
-    "image": "https://logo.clearbit.com/bestkru.com",
-    "infoLink": "https://bestkru.com/"
+    "caption": "Buy Instagram Followers Twicsy",
+    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/f07b6f83-d0ed-43c6-91ae-ec8fa90512cd/twicsy-followers.png",
+    "infoLink": "https://twicsy.com/buy-instagram-followers"
   },
   {
-    "caption": "Celebian",
-    "image": "https://logo.clearbit.com/celebian.com",
-    "infoLink": "https://celebian.com/buy-tiktok-followers"
+    "caption": "SnapTik",
+    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/546bcd53-6615-457d-ab21-1db1c52b3af5/logo.jpg",
+    "infoLink": "https://snaptik.pro"
   }
 ]

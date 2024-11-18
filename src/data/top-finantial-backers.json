@@ -1,10 +1,5 @@
 [
   {
-    "caption": "cocopon",
-    "image": "https://www.gravatar.com/avatar/30a0fa53945400e145718f57155869d3?default=404",
-    "infoLink": "https://cocopon.me"
-  },
-  {
     "caption": "Airbnb",
     "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/0b26a840-d57a-11e9-a92b-dfce8d6cf8c1.png",
     "infoLink": "https://www.airbnb.com/"
@@ -23,5 +18,10 @@
     "caption": "BestKru",
     "image": "https://logo.clearbit.com/bestkru.com",
     "infoLink": "https://bestkru.com/"
+  },
+  {
+    "caption": "KroTools",
+    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/cb27b458-ac80-40db-982a-782b7dc93125/oc-logo.png",
+    "infoLink": "https://krotools.com"
   }
 ]

@@ -3,10 +3,10 @@ with import <nixpkgs> {};
 stdenv.mkDerivation {
     name = "node";
     buildInputs = [
-        nodejs-16_x
+        nodejs_22
         autoconf
         automake
-        yarn
+        (yarn.override { nodejs = nodejs_22; })
         bash
         docker-compose
     ];

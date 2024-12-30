@@ -247,7 +247,7 @@ console.log(result.map);  // source map
 Note that the source map is not saved in a file, it's just returned in
 `result.map`.  The value passed for `sourceMap.url` is only used to set
 `//# sourceMappingURL=out.js.map` in `result.code`. The value of
-`filename` is only used to set `file` attribute (see [the spec](https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k))
+`filename` is only used to set `file` attribute (see [the spec][sm-spec])
 in source map file.
 
 You can set option `sourceMap.url` to be `"inline"` and source map will

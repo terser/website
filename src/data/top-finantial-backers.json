@@ -1,10 +1,5 @@
 [
   {
-    "caption": "Airbnb",
-    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/0b26a840-d57a-11e9-a92b-dfce8d6cf8c1.png",
-    "infoLink": "https://www.airbnb.com/"
-  },
-  {
     "caption": "Poprey - Buy Instagram Followers",
     "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/c6128850-20c0-4578-aecb-9ae9942bea95/logo-200.png",
     "infoLink": "https://poprey.com/buy-instagram-followers"
@@ -23,5 +18,10 @@
     "caption": "Blastup",
     "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/8838155f-d39f-4c6a-8dbe-603940c8bb29/favicon--dark.jpg",
     "infoLink": "https://blastup.com"
+  },
+  {
+    "caption": "Celebian",
+    "image": "https://logo.clearbit.com/celebian.com",
+    "infoLink": "https://celebian.com/buy-tiktok-followers"
   }
 ]

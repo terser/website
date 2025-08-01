@@ -1,5 +1,10 @@
 [
   {
+    "caption": "Airbnb",
+    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/0b26a840-d57a-11e9-a92b-dfce8d6cf8c1.png",
+    "infoLink": "https://www.airbnb.com/"
+  },
+  {
     "caption": "Buy Twitter X Followers",
     "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/b85450a0-3c0b-4c85-9748-a40e8644b986/logo.png",
     "infoLink": "https://mysocialfollowing.com/twitter/followers"
@@ -18,10 +23,5 @@
     "caption": "BestKru",
     "image": "https://logo.clearbit.com/bestkru.com",
     "infoLink": "https://bestkru.com/"
-  },
-  {
-    "caption": "SnapTik",
-    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/546bcd53-6615-457d-ab21-1db1c52b3af5/logo.jpg",
-    "infoLink": "https://snaptik.pro"
   }
 ]

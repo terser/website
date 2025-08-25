@@ -5,11 +5,6 @@
     "infoLink": "https://www.airbnb.com/"
   },
   {
-    "caption": "Buy Twitter X Followers",
-    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/b85450a0-3c0b-4c85-9748-a40e8644b986/logo.png",
-    "infoLink": "https://mysocialfollowing.com/twitter/followers"
-  },
-  {
     "caption": "Instagram Story Viewer",
     "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/8d25d8f6-d19c-46f6-9f33-17fa68adf22e/target.jpg",
     "infoLink": "https://anonstories.com/"
@@ -23,5 +18,10 @@
     "caption": "BestKru",
     "image": "https://logo.clearbit.com/bestkru.com",
     "infoLink": "https://bestkru.com/"
+  },
+  {
+    "caption": "SnapTik",
+    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/546bcd53-6615-457d-ab21-1db1c52b3af5/logo.jpg",
+    "infoLink": "https://snaptik.pro"
   }
 ]

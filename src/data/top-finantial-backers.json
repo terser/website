@@ -1,5 +1,10 @@
 [
   {
+    "caption": "Airbnb",
+    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/0b26a840-d57a-11e9-a92b-dfce8d6cf8c1.png",
+    "infoLink": "https://www.airbnb.com/"
+  },
+  {
     "caption": "BestKru",
     "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/d014fe9a-f647-41ab-a6bb-e42985761a66/e26d6596-8351-4094-9e4e-f8eb6229613b.png",
     "infoLink": "https://bestkru.com/"
@@ -15,13 +20,8 @@
     "infoLink": "https://anonstories.com/"
   },
   {
-    "caption": "Story Viewer",
-    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/f55a2454-38db-4d73-a61d-66d0f6dd7c8b/6394147-512.png",
-    "infoLink": "https://storyviewer.com/"
-  },
-  {
-    "caption": "Blastup",
-    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/8838155f-d39f-4c6a-8dbe-603940c8bb29/favicon--dark.jpg",
-    "infoLink": "https://blastup.com"
+    "caption": "Guidebook.BetWinner",
+    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/82cab29a-7002-4924-83bf-2eecb03d07c4/0x0.png",
+    "infoLink": "https://guidebook.betwinner.com/"
   }
 ]

@@ -3,7 +3,6 @@ import Layout from '@theme/Layout';
 import cx from 'classnames';
 
 import styles from './index.module.css';
-import Ad from '../components/Ad';
 import { openCollectiveSponsors, users } from '../data/indexData';
 
 class HomeSplash extends React.Component {
@@ -148,7 +147,6 @@ export default class Index extends React.Component {
       <Layout>
         <HomeSplash siteConfig={siteConfig} language={language} />
         <HomeContent>
-          <div className={styles.centeredAd}><Ad /></div>
           <Showcase />
           <OCSponsors />
         </HomeContent>

@@ -1,5 +1,10 @@
 [
   {
+    "caption": "Airbnb",
+    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/0b26a840-d57a-11e9-a92b-dfce8d6cf8c1.png",
+    "infoLink": "https://www.airbnb.com/"
+  },
+  {
     "caption": "BestKru",
     "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/d014fe9a-f647-41ab-a6bb-e42985761a66/e26d6596-8351-4094-9e4e-f8eb6229613b.png",
     "infoLink": "https://bestkru.com/"
@@ -18,10 +23,5 @@
     "caption": "Blastup",
     "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/8838155f-d39f-4c6a-8dbe-603940c8bb29/favicon--dark.jpg",
     "infoLink": "https://blastup.com"
-  },
-  {
-    "caption": "Horoskopi",
-    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/1dc17c49-7c7c-4553-a916-0d59660ae863/Screenshot%202025-11-03%20at%2011.27.54%E2%80%AFPM.png",
-    "infoLink": "https://horoskopishqip.com/"
   }
 ]

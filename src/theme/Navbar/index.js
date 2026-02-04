@@ -10,7 +10,7 @@ export default function Navbar() {
         <span>
           <strong>Minnesotans are being repressed by a violent regime</strong>
           <br />
-          <u>Find out how you can help help!</u>
+          <u>Find out how you can help!</u>
         </span>
       </a>
       <NavbarLayout>

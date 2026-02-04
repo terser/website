@@ -1,0 +1,11 @@
+
+.topBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #338;
+  height: 6rem;
+  color: white;
+  text-align: center;
+}
+

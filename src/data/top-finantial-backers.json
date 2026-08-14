@@ -1,13 +1,13 @@
 [
   {
-    "caption": "Fun88",
-    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/1688ebca-4984-4b9b-a24d-8fdd1233892f/fun88-logo.png",
-    "infoLink": "https://global.fun88.com/"
-  },
-  {
     "caption": "Airbnb",
     "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/0b26a840-d57a-11e9-a92b-dfce8d6cf8c1.png",
     "infoLink": "https://www.airbnb.com/"
+  },
+  {
+    "caption": "Fun88",
+    "image": "https://opencollective-production.s3.us-west-1.amazonaws.com/account-avatar/1688ebca-4984-4b9b-a24d-8fdd1233892f/fun88-logo.png",
+    "infoLink": "https://global.fun88.com/"
   },
   {
     "caption": "BestKru",
